@@ -9,6 +9,9 @@ Person:
             name:
                 type: "String!"
                 description: "Name of the person"
+            title:
+                type: "PersonTitle!"
+                description: "Title of the person"
             vehicle:
                 type: "Vehicle"
                 description: "Vehicles of the person"

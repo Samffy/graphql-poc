@@ -1,0 +1,15 @@
+PersonTitle:
+    type: enum
+    config:
+        description: "Title of a person"
+        values:
+            unknown:
+                value: 0
+            Miss:
+                value: 1
+            Mrs:
+                value: 2
+            Ms:
+                value: 3
+            Mr:
+                value: 4

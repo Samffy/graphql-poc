@@ -44,9 +44,9 @@ class PersonRepository implements PersonRepositoryInterface
     private function getPersons(): array
     {
         return [
-            'duffy'  => new Person('duffy', 'Patrick Duffy'),
-            'chuck'  => new Person('chuck', 'Chuck Norris'),
-            'milano' => new Person('milano', 'Alyssa Milano'),
+            'duffy'  => new Person('duffy', 'Patrick Duffy', Person::TITLE_MR),
+            'chuck'  => new Person('chuck', 'Chuck Norris', Person::TITLE_MR),
+            'milano' => new Person('milano', 'Alyssa Milano', Person::TITLE_MRS),
         ];
     }
 }
