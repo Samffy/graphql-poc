@@ -2,6 +2,13 @@ Query:
     type: object
     config:
         fields:
+            persons:
+                type: '[Person]'
+                args:
+                    id:
+                        description: 'Resolves person using its id.'
+                        type: 'String'
+                resolve: "@=resolver('Persons', [args['id']])"
             person:
                 type: 'Person'
                 args:

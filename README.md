@@ -63,17 +63,20 @@ Here is an example of a graphQL query :
 
 ```graphql
 {
-  person(id: "duffy") {
+  persons {
     id
     name
     vehicle {
       id
       manufacturer
+      model
       ... on Car {
         seats_number
+      }
+      ... on Truck {
+      	maximum_load
       }
     }
   }
 }
-
 ```

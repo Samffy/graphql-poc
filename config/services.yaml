@@ -22,6 +22,11 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: 'app.person.resolver', method: 'resolve' }
 
+    app.persons.resolver:
+        class: App\Person\App\Resolver\PersonsResolver
+        tags:
+            - { name: overblog_graphql.resolver }
+
     app.vehicle.resolver:
         class: App\Vehicle\App\Resolver\VehicleResolver
         tags:

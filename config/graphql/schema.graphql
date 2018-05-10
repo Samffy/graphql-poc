@@ -26,6 +26,10 @@ type Person {
 }
 
 type Query {
+  persons(
+    # Resolves person using its id.
+    id: String
+  ): [Person]
   person(
     # Resolves person using its id.
     id: String!

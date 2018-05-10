@@ -2,6 +2,7 @@
 
 namespace App\Person\Infra\Repository;
 
+use App\Person\App\Query\PersonsQuery;
 use App\Person\Domain\Person;
 use App\Person\Domain\PersonRepositoryInterface;
 
@@ -18,6 +19,23 @@ class PersonRepository implements PersonRepositoryInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param PersonsQuery $query
+     * @return array
+     */
+    public function findAll(PersonsQuery $query): array
+    {
+        if ($query->hasPersonId()) {
+            if (array_key_exists($query->getPersonId(), $this->getPersons())) {
+                return [$this->getPersons()[$query->getPersonId()]];
+            } else {
+                return [];
+            }
+        }
+
+        return $this->getPersons();
     }
 
     /**

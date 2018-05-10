@@ -17,6 +17,11 @@ class PersonResolver implements ResolverInterface, AliasedInterface
     private $personRepository;
 
     /**
+     * @var VehicleRepository
+     */
+    private $vehicleRepository;
+
+    /**
      * @param PersonRepositoryInterface $personRepository
      * @param VehicleRepository $vehicleRepository
      */
