@@ -1,6 +1,5 @@
 Car:
     type: object
-    inherits: [Vehicle]
     config:
         interfaces: [Vehicle]
         description: "Type of vehicle manage by the app"
