@@ -12,6 +12,12 @@ Person:
             title:
                 type: "PersonTitle!"
                 description: "Title of the person"
+            birth_date:
+                type: "BirthDate"
+                description: "Birth date of the person"
+            created_at:
+                type: "DateTime!"
+                description: "Date of creation of the person in database"
             vehicle:
                 type: "Vehicle"
                 description: "Vehicles of the person"

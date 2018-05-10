@@ -44,9 +44,9 @@ class PersonRepository implements PersonRepositoryInterface
     private function getPersons(): array
     {
         return [
-            'duffy'  => new Person('duffy', 'Patrick Duffy', Person::TITLE_MR),
-            'chuck'  => new Person('chuck', 'Chuck Norris', Person::TITLE_MR),
-            'milano' => new Person('milano', 'Alyssa Milano', Person::TITLE_MRS),
+            'duffy'  => new Person('duffy', 'Patrick Duffy', Person::TITLE_MR, new \DateTime('1949-03-17 00:00:00')),
+            'chuck'  => new Person('chuck', 'Chuck Norris', Person::TITLE_MR, new \DateTime('1940-03-10 00:00:00')),
+            'milano' => new Person('milano', 'Alyssa Milano', Person::TITLE_MRS, new \DateTime('1972-12-19 00:00:00')),
         ];
     }
 }

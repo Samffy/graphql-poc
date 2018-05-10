@@ -26,15 +26,28 @@ class Person
     private $title;
 
     /**
+     * @var \DateTime
+     */
+    private $birthDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
      * @param string $id
      * @param string $name
      * @param int $title
+     * @param \DateTime|null $birthDate
      */
-    public function __construct(string $id, string $name, int $title = self::TITLE_UNKNOWN)
+    public function __construct(string $id, string $name, int $title = self::TITLE_UNKNOWN, \DateTime $birthDate = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->title = $title;
+        $this->birthDate = $birthDate;
+        $this->createdAt = new \Datetime();
     }
 
     /**
@@ -59,5 +72,21 @@ class Person
     public function getTitle(): int
     {
         return $this->title;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthDate(): ?\DateTime
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
     }
 }

@@ -1,3 +1,5 @@
+scalar BirthDate
+
 # Type of vehicle manage by the app
 type Car implements Vehicle {
   # Internal identifier
@@ -13,6 +15,8 @@ type Car implements Vehicle {
   seats_number: Int!
 }
 
+scalar DateTime
+
 # Person manage by the app
 type Person {
   # Internal identifier
@@ -21,8 +25,26 @@ type Person {
   # Name of the person
   name: String!
 
+  # Title of the person
+  title: PersonTitle!
+
+  # Birth date of the person
+  birth_date: BirthDate
+
+  # Date of creation of the person in database
+  created_at: DateTime!
+
   # Vehicles of the person
   vehicle: Vehicle
+}
+
+# Title of a person
+enum PersonTitle {
+  unknown
+  Miss
+  Mrs
+  Ms
+  Mr
 }
 
 type Query {

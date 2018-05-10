@@ -1,0 +1,6 @@
+BirthDate:
+    type: custom-scalar
+    config:
+        serialize: ["App\\Common\\App\\Type\\BirthDateType", "serialize"]
+        parseValue: ["App\\Common\\App\\Type\\BirthDateType", "parseValue"]
+        parseLiteral: ["App\\Common\\App\\Type\\BirthDateType", "parseLiteral"]
