@@ -17,7 +17,8 @@ class CarResolver implements ResolverInterface, AliasedInterface
     /**
      * @param CarRepository $carRepository
      */
-    public function __construct(CarRepository $carRepository) {
+    public function __construct(CarRepository $carRepository)
+    {
         $this->carRepository = $carRepository;
     }
 

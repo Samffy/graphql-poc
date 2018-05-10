@@ -12,4 +12,4 @@ Vehicle:
             model:
                 type: "String!"
                 description: "The model of the vehicle"
-        resolveType: "@=resolver('Vehicle', [value])"
+        resolveType: "@=resolver('vehicle_type', [value])"

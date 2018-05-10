@@ -2,8 +2,8 @@
 
 namespace App\Vehicle\Infra\Repository;
 
+use App\Vehicle\App\Query\VehiclesQuery;
 use App\Person\Domain\Person;
-use App\Vehicle\Domain\VehicleInterface;
 
 class VehicleRepository
 {
@@ -19,16 +19,44 @@ class VehicleRepository
 
     /**
      * @param Person $person
-     * @return VehicleInterface|null
+     * @return array
      */
-    public function findByPerson(Person $person): ?VehicleInterface
+    public function findByPerson(Person $person): array
     {
-
-        if (array_key_exists($person->getId(), $this->getVehicles())) {
-            return $this->getVehicles()[$person->getId()];
+        if (array_key_exists($person->getId(), $this->getVehiclesByPersons())) {
+            return $this->getVehiclesByPersons()[$person->getId()];
         }
 
-        return null;
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function findAll(VehiclesQuery $query): array
+    {
+        $vehicles = $this->getVehicles();
+
+        if ($query->hasPersonId()) {
+            if (array_key_exists($query->getPersonId(), $this->getVehiclesByPersons())) {
+                $vehicles = $this->getVehiclesByPersons()[$query->getPersonId()];
+            } else {
+                $vehicles = [];
+            }
+        }
+
+        if ($query->hasVehicleId()) {
+            $search = $query->getVehicleId();
+
+            return array_filter(
+                $vehicles,
+                function ($e) use ($search) {
+                    return $e->getId() == $search;
+                }
+            );
+        }
+
+        return $vehicles;
     }
 
     /**
@@ -37,9 +65,31 @@ class VehicleRepository
     private function getVehicles(): array
     {
         return [
-            'duffy'  => $this->carRepository->find('cox'),
-            'chuck'  => $this->truckRepository->find('ateam'),
-            'milano' => $this->carRepository->find('clio'),
+            $this->carRepository->find('cox'),
+            $this->carRepository->find('polo'),
+            $this->carRepository->find('clio'),
+            $this->truckRepository->find('fear'),
+            $this->truckRepository->find('ateam'),
+            $this->truckRepository->find('dumb'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function getVehiclesByPersons(): array
+    {
+        return [
+            'duffy'  => [
+                $this->carRepository->find('cox'),
+                $this->truckRepository->find('fear'),
+            ],
+            'chuck'  => [
+                $this->truckRepository->find('ateam'),
+            ],
+            'milano' => [
+                $this->carRepository->find('clio'),
+            ],
         ];
     }
 }

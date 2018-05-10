@@ -16,6 +16,16 @@ Query:
                         description: 'Resolves person using its id.'
                         type: 'String!'
                 resolve: "@=resolver('Person', [args['id']])"
+            vehicles:
+                type: '[Vehicle]'
+                args:
+                    owner:
+                        description: 'Resolves vehicle using its owner id.'
+                        type: 'String'
+                    id:
+                        description: 'Resolves vehicle using its id.'
+                        type: 'String'
+                resolve: "@=resolver('Vehicles', [args['owner'], args['id']])"
             car:
                 type: 'Car'
                 args:

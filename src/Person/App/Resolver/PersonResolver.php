@@ -4,8 +4,6 @@ namespace App\Person\App\Resolver;
 
 use App\Person\Domain\Person;
 use App\Person\Domain\PersonRepositoryInterface;
-use App\Vehicle\Domain\VehicleInterface;
-use App\Vehicle\Infra\Repository\VehicleRepository;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
 
@@ -17,17 +15,11 @@ class PersonResolver implements ResolverInterface, AliasedInterface
     private $personRepository;
 
     /**
-     * @var VehicleRepository
-     */
-    private $vehicleRepository;
-
-    /**
      * @param PersonRepositoryInterface $personRepository
-     * @param VehicleRepository $vehicleRepository
      */
-    public function __construct(PersonRepositoryInterface $personRepository, VehicleRepository $vehicleRepository) {
+    public function __construct(PersonRepositoryInterface $personRepository)
+    {
         $this->personRepository = $personRepository;
-        $this->vehicleRepository = $vehicleRepository;
     }
 
     /**
@@ -37,15 +29,6 @@ class PersonResolver implements ResolverInterface, AliasedInterface
     public function resolve(string $id): ?Person
     {
         return $this->personRepository->find($id);
-    }
-
-    /**
-     * @param Person $person
-     * @return VehicleInterface|null
-     */
-    public function resolveVehicle(Person $person): ?VehicleInterface
-    {
-        return $this->vehicleRepository->findByPerson($person);
     }
 
     /**

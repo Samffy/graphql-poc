@@ -35,7 +35,10 @@ type Person {
   created_at: DateTime!
 
   # Vehicles of the person
-  vehicle: Vehicle
+  vehicles(
+    # Resolves vehicle using its id.
+    id: String
+  ): [Vehicle]
 }
 
 # Title of a person
@@ -56,6 +59,13 @@ type Query {
     # Resolves person using its id.
     id: String!
   ): Person
+  vehicles(
+    # Resolves vehicle using its owner id.
+    owner: String
+
+    # Resolves vehicle using its id.
+    id: String
+  ): [Vehicle]
   car(
     # Resolves car using its id.
     id: String!

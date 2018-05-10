@@ -20,7 +20,7 @@ services:
     app.person.resolver:
         class: App\Person\App\Resolver\PersonResolver
         tags:
-            - { name: overblog_graphql.resolver, alias: 'app.person.resolver', method: 'resolve' }
+            - { name: overblog_graphql.resolver }
 
     app.persons.resolver:
         class: App\Person\App\Resolver\PersonsResolver
@@ -30,7 +30,12 @@ services:
     app.vehicle.resolver:
         class: App\Vehicle\App\Resolver\VehicleResolver
         tags:
-            - { name: overblog_graphql.resolver }
+            - { name: overblog_graphql.resolver, alias: "vehicle_type", method: "resolveType" }
+
+    app.vehicles.resolver:
+        class: App\Vehicle\App\Resolver\VehiclesResolver
+        tags:
+            - { name: overblog_graphql.resolver, alias: "app.vehicles.resolver" }
 
     app.car.resolver:
         class: App\Vehicle\App\Resolver\CarResolver

@@ -18,7 +18,11 @@ Person:
             created_at:
                 type: "DateTime!"
                 description: "Date of creation of the person in database"
-            vehicle:
-                type: "Vehicle"
+            vehicles:
+                type: "[Vehicle]"
                 description: "Vehicles of the person"
-                resolve: "@=service('app.person.resolver').resolveVehicle(value)"
+                args:
+                    id:
+                        description: 'Resolves vehicle using its id.'
+                        type: 'String'
+                resolve: "@=service('app.vehicles.resolver').resolveByPerson(value, args['id'])"

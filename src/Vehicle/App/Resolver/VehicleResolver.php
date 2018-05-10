@@ -3,11 +3,9 @@
 namespace App\Vehicle\App\Resolver;
 
 use App\Vehicle\Domain\VehicleInterface;
-use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
-use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 
-class VehicleResolver implements ResolverInterface, AliasedInterface
+class VehicleResolver
 {
     /**
      * @var TypeResolver
@@ -27,18 +25,8 @@ class VehicleResolver implements ResolverInterface, AliasedInterface
      * @return null|string
      * @throws \ReflectionException
      */
-    public function resolve(VehicleInterface $vehicle): ?string
+    public function resolveType(VehicleInterface $vehicle): ?string
     {
         return $this->typeResolver->resolve((new \ReflectionClass($vehicle))->getShortName());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getAliases(): array
-    {
-        return [
-            'resolve' => 'Vehicle',
-        ];
     }
 }

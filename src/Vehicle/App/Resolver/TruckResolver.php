@@ -17,7 +17,8 @@ class TruckResolver implements ResolverInterface, AliasedInterface
     /**
      * @param TruckRepository $truckRepository
      */
-    public function __construct(TruckRepository $truckRepository) {
+    public function __construct(TruckRepository $truckRepository)
+    {
         $this->truckRepository = $truckRepository;
     }
 
