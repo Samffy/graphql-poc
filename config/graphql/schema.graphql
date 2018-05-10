@@ -1,0 +1,68 @@
+# Type of vehicle manage by the app
+type Car implements Vehicle {
+  # Internal identifier
+  id: ID!
+
+  # The manufacturer of the car
+  manufacturer: String!
+
+  # The model of the car
+  model: String!
+
+  # Number of seats in the car
+  seats_number: Int!
+}
+
+# Person manage by the app
+type Person {
+  # Internal identifier
+  id: ID!
+
+  # Name of the person
+  name: String!
+
+  # Vehicles of the person
+  vehicle: Vehicle
+}
+
+type Query {
+  person(
+    # Resolves person using its id.
+    id: String!
+  ): Person
+  car(
+    # Resolves car using its id.
+    id: String!
+  ): Car
+  truck(
+    # Resolves truck using its id.
+    id: String!
+  ): Truck
+}
+
+# Type of vehicle manage by the app
+type Truck implements Vehicle {
+  # Internal identifier
+  id: ID!
+
+  # The manufacturer of the truck
+  manufacturer: String!
+
+  # The model of the truck
+  model: String!
+
+  # Maximum load of the truck
+  maximum_load: Int!
+}
+
+# A vehicle interface
+interface Vehicle {
+  # The id of the vehicle
+  id: ID!
+
+  # The manufacturer of the vehicle
+  manufacturer: String!
+
+  # The model of the vehicle
+  model: String!
+}

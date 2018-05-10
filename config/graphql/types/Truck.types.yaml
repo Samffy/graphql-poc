@@ -1,0 +1,19 @@
+Truck:
+    type: object
+    inherits: [Vehicle]
+    config:
+        interfaces: [Vehicle]
+        description: "Type of vehicle manage by the app"
+        fields:
+            id:
+                type: "ID!"
+                description: "Internal identifier"
+            manufacturer:
+                type: "String!"
+                description: "The manufacturer of the truck"
+            model:
+                type: "String!"
+                description: "The model of the truck"
+            maximum_load:
+                type: "Int!"
+                description: "Maximum load of the truck"

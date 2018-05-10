@@ -1,0 +1,15 @@
+Vehicle:
+    type: interface
+    config:
+        description: "A vehicle interface"
+        fields:
+            id:
+                type: "ID!"
+                description: "The id of the vehicle"
+            manufacturer:
+                type: "String!"
+                description: "The manufacturer of the vehicle"
+            model:
+                type: "String!"
+                description: "The model of the vehicle"
+        resolveType: "@=resolver('Vehicle', [value])"

@@ -1,0 +1,15 @@
+Person:
+    type: object
+    config:
+        description: "Person manage by the app"
+        fields:
+            id:
+                type: "ID!"
+                description: "Internal identifier"
+            name:
+                type: "String!"
+                description: "Name of the person"
+            vehicle:
+                type: "Vehicle"
+                description: "Vehicles of the person"
+                resolve: "@=service('app.person.resolver').resolveVehicle(value)"

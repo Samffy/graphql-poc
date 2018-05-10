@@ -1,0 +1,25 @@
+Query:
+    type: object
+    config:
+        fields:
+            person:
+                type: 'Person'
+                args:
+                    id:
+                        description: 'Resolves person using its id.'
+                        type: 'String!'
+                resolve: "@=resolver('Person', [args['id']])"
+            car:
+                type: 'Car'
+                args:
+                    id:
+                        description: 'Resolves car using its id.'
+                        type: 'String!'
+                resolve: "@=resolver('Car', [args['id']])"
+            truck:
+                type: 'Truck'
+                args:
+                    id:
+                        description: 'Resolves truck using its id.'
+                        type: 'String!'
+                resolve: "@=resolver('Truck', [args['id']])"

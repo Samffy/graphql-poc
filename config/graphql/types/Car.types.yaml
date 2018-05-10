@@ -1,0 +1,19 @@
+Car:
+    type: object
+    inherits: [Vehicle]
+    config:
+        interfaces: [Vehicle]
+        description: "Type of vehicle manage by the app"
+        fields:
+            id:
+                type: "ID!"
+                description: "Internal identifier"
+            manufacturer:
+                type: "String!"
+                description: "The manufacturer of the car"
+            model:
+                type: "String!"
+                description: "The model of the car"
+            seats_number:
+                type: "Int!"
+                description: "Number of seats in the car"
