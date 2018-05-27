@@ -46,3 +46,8 @@ services:
         class: App\Vehicle\App\Resolver\TruckResolver
         tags:
             - { name: overblog_graphql.resolver }
+
+    app.animal.resolver:
+        class: App\Animal\App\Resolver\AnimalResolver
+        tags:
+            - { name: overblog_graphql.resolver, alias: "animal_type", method: "resolveType" }

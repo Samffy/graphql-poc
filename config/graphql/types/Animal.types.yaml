@@ -1,0 +1,15 @@
+Animal:
+    type: interface
+    config:
+        description: "A animal interface"
+        fields:
+            id:
+                type: "ID!"
+                description: "The id of the animal"
+            name:
+                type: "String!"
+                description: "The name of the animal"
+            breed:
+                type: "String!"
+                description: "Breed of the animal"
+        resolveType: "@=resolver('animal_type', [value])"

@@ -1,3 +1,27 @@
+# A animal interface
+interface Animal {
+  # The id of the animal
+  id: ID!
+
+  # The name of the animal
+  name: String!
+
+  # Breed of the animal
+  breed: String!
+}
+
+# Type of animal manage by the app
+type Bear implements Animal {
+  # The id of the animal
+  id: ID!
+
+  # The name of the animal
+  name: String!
+
+  # Breed of the animal
+  breed: String!
+}
+
 scalar BirthDate
 
 # Type of vehicle manage by the app
@@ -15,7 +39,31 @@ type Car implements Vehicle {
   seats_number: Int!
 }
 
+# Type of animal manage by the app
+type Cat implements Animal {
+  # The id of the animal
+  id: ID!
+
+  # The name of the animal
+  name: String!
+
+  # Breed of the animal
+  breed: String!
+}
+
 scalar DateTime
+
+# Type of animal manage by the app
+type Dog implements Animal {
+  # The id of the animal
+  id: ID!
+
+  # The name of the animal
+  name: String!
+
+  # Breed of the animal
+  breed: String!
+}
 
 # Person manage by the app
 type Person {
@@ -39,6 +87,9 @@ type Person {
     # Resolves vehicle using its id.
     id: String
   ): [Vehicle]
+
+  # Pet of the person
+  pet: Pet
 }
 
 # Title of a person
@@ -49,6 +100,9 @@ enum PersonTitle {
   Ms
   Mr
 }
+
+# Animals available as pet
+union Pet = Dog | Cat | Bear
 
 type Query {
   persons(

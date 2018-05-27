@@ -3,6 +3,25 @@
 This project is a proof of concept to test graphQL usage in PHP.  
 This work is based mainly on [Symfony framework](https://github.com/symfony/symfony/tree/4.0) and [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle/tree/0.11).
 
+This project implements :
+
+* Type system
+    * :heavy_check_mark: Scalars
+    * :heavy_check_mark: Object
+    * :heavy_check_mark: Interface
+    * :heavy_check_mark:Union
+    * :heavy_check_mark: Enum
+    * :heavy_multiplication_x:Input Object
+    * :heavy_multiplication_x: Lists
+    * :heavy_multiplication_x: Non-Null
+* Concepts :
+    * :heavy_check_mark: Resolver
+    * :heavy_check_mark: Query
+    * :heavy_multiplication_x: Type Inheritance
+    * :heavy_multiplication_x: Pagination
+    * :heavy_multiplication_x: Mutation
+    * :heavy_multiplication_x: Promise
+    
 ## Requirement
 
 * git
@@ -51,7 +70,6 @@ If you update this project, you can dump the new version of the GraphQL schema u
 ```
 $ bin/console graphql:dump-schema --format=graphql --file=./config/graphql/schema.graphql
 ```
-
 
 ## Queries
 

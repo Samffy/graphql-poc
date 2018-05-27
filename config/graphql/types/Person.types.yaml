@@ -26,3 +26,6 @@ Person:
                         description: 'Resolves vehicle using its id.'
                         type: 'String'
                 resolve: "@=service('app.vehicles.resolver').resolveByPerson(value, args['id'])"
+            pet:
+                type: "Pet"
+                description: "Pet of the person"

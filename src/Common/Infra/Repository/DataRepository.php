@@ -2,6 +2,9 @@
 
 namespace App\Common\Infra\Repository;
 
+use App\Animal\Domain\Bear;
+use App\Animal\Domain\Cat;
+use App\Animal\Domain\Dog;
 use App\Person\Domain\Person;
 use App\Vehicle\Domain\Car;
 use App\Vehicle\Domain\Truck;
@@ -28,9 +31,9 @@ class DataRepository
         ];
 
         $persons = [
-            'duffy'  => new Person('duffy', 'Patrick Duffy', Person::TITLE_MR, new \DateTime('1949-03-17 00:00:00')),
-            'chuck'  => new Person('chuck', 'Chuck Norris', Person::TITLE_MR, new \DateTime('1940-03-10 00:00:00')),
-            'milano' => new Person('milano', 'Alyssa Milano', Person::TITLE_MRS, new \DateTime('1972-12-19 00:00:00')),
+            'duffy'  => new Person('duffy', 'Patrick Duffy', Person::TITLE_MR, new \DateTime('1949-03-17 00:00:00'), new Dog('dog1', 'Rintintin')),
+            'chuck'  => new Person('chuck', 'Chuck Norris', Person::TITLE_MR, new \DateTime('1940-03-10 00:00:00'), new Bear('bear1', 'Baloo')),
+            'milano' => new Person('milano', 'Alyssa Milano', Person::TITLE_MRS, new \DateTime('1972-12-19 00:00:00'), new Cat('cat1', 'Felix')),
         ];
 
         self::$data = [
