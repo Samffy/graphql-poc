@@ -9,9 +9,9 @@ This project implements :
     * :heavy_check_mark: Scalars
     * :heavy_check_mark: Object
     * :heavy_check_mark: Interface
-    * :heavy_check_mark:Union
+    * :heavy_check_mark: Union
     * :heavy_check_mark: Enum
-    * :heavy_multiplication_x:Input Object
+    * :heavy_multiplication_x: Input Object
     * :heavy_multiplication_x: Lists
     * :heavy_multiplication_x: Non-Null
 * Concepts :
@@ -74,7 +74,8 @@ $ bin/console graphql:dump-schema --format=graphql --file=./config/graphql/schem
 ## Queries
 
 This project use 2 mains types : `Person` and `Vehicle`  
-A person has a `Vehicle`.  
+A person has a `Pet` and one `Vehicle` or more.   
+A `Pet` can be a `Dog`, a `Cat` or a `Bear`.  
 A `Vehicle` can be a `Car` or a `Truck`.
 
 Here is an example of a graphQL query :
@@ -83,18 +84,24 @@ Here is an example of a graphQL query :
 {
   persons(id: "duffy") {
     id
-    title
     name
     birth_date
     created_at
-    vehicles(id: "cox") {
+    pet {
+      ...on Animal {
+        id
+        name
+        breed
+      }
+    }
+    vehicles {
       id
       manufacturer
       model
-      ... on Car {
+      ...on Car {
         seats_number
       }
-      ... on Truck {
+      ...on Truck {
         maximum_load
       }
     }
