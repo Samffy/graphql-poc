@@ -12,8 +12,8 @@ This project implements :
     * :heavy_check_mark: Union
     * :heavy_check_mark: Enum
     * :heavy_multiplication_x: Input Object
-    * :heavy_multiplication_x: Lists
-    * :heavy_multiplication_x: Non-Null
+    * :heavy_check_mark: Lists
+    * :heavy_check_mark: Non-Null
 * Concepts :
     * :heavy_check_mark: Resolver
     * :heavy_check_mark: Query
