@@ -1741,16 +1741,16 @@
     "packages-dev": [
         {
             "name": "overblog/graphiql-bundle",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overblog/GraphiQLBundle.git",
-                "reference": "d6e77ce252417faa65f708f901b1e2f12b105ca8"
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overblog/GraphiQLBundle/zipball/d6e77ce252417faa65f708f901b1e2f12b105ca8",
-                "reference": "d6e77ce252417faa65f708f901b1e2f12b105ca8",
+                "url": "https://api.github.com/repos/overblog/GraphiQLBundle/zipball/e3164ef62ff7fd91954009266e84803a6543ae96",
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96",
                 "shasum": ""
             },
             "require": {
@@ -1805,7 +1805,7 @@
                 "graphiql",
                 "graphql"
             ],
-            "time": "2018-01-24T16:22:34+00:00"
+            "time": "2018-05-14T09:39:33+00:00"
         },
         {
             "name": "symfony/dotenv",
