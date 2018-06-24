@@ -2,37 +2,37 @@
   "data": {
     "vehicles": [
       {
-        "id": "ateam",
+        "id": "VHJ1Y2s6YXRlYW0=",
         "manufacturer": "GMC",
         "model": "Vandura",
         "maximum_load": 1000
       },
       {
-        "id": "dumb",
+        "id": "VHJ1Y2s6ZHVtYg==",
         "manufacturer": "Ford",
         "model": "Econoline",
         "maximum_load": 600
       },
       {
-        "id": "fear",
+        "id": "VHJ1Y2s6ZmVhcg==",
         "manufacturer": "Corbitt",
         "model": "50SD6",
         "maximum_load": 5000
       },
       {
-        "id": "clio",
+        "id": "Q2FyOmNsaW8=",
         "manufacturer": "Renault",
         "model": "Clio 2",
         "seats_number": 5
       },
       {
-        "id": "cox",
+        "id": "Q2FyOmNveA==",
         "manufacturer": "Volkswagen",
         "model": "Coccinelle",
         "seats_number": 4
       },
       {
-        "id": "polo",
+        "id": "Q2FyOnBvbG8=",
         "manufacturer": "Volkswagen",
         "model": "Polo",
         "seats_number": 5

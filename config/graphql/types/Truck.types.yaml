@@ -6,6 +6,7 @@ Truck:
         fields:
             id:
                 type: "ID!"
+                builder: "Relay::GlobalId"
                 description: "Internal identifier"
             manufacturer:
                 type: "String!"

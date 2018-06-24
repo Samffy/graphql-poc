@@ -12,3 +12,7 @@ Feature: Test persons queries
   Scenario: Filter persons list using person ID and ask for all available data
     When I submit the query persons_filter_id_expand_all
     And the json response must be equals to persons_filter_id_expand_all json response
+
+  Scenario: Filter persons list using person ID, ask for all available data and filter on car ID
+    When I submit the query persons_filter_id_car_expand_all
+    And the json response must be equals to persons_filter_id_car_expand_all json response

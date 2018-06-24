@@ -18,6 +18,12 @@ services:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
+    App\Common\App\Expression\IdFromGlobalId:
+        class: App\Common\App\Expression\IdFromGlobalId
+        public: false
+        tags:
+            - { name: overblog_graphql.expression_function }
+
     app.person.resolver:
         class: App\Person\App\Resolver\PersonResolver
         tags:

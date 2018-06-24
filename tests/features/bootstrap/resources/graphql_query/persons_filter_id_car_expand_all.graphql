@@ -6,20 +6,20 @@
         birth_date
         created_at
         pet {
-            ...on Animal {
+            ... on Animal {
                 id
                 name
                 breed
             }
         }
-        vehicles {
+        vehicles(id: "VHJ1Y2s6ZmVhcg==") {
             id
             manufacturer
             model
-            ...on Car {
+            ... on Car {
                 seats_number
             }
-            ...on Truck {
+            ... on Truck {
                 maximum_load
             }
         }

@@ -1,5 +1,5 @@
 {
-    vehicles(owner: "duffy") {
+    vehicles(owner: "UGVyc29uOmR1ZmZ5") {
         id
         manufacturer
         model

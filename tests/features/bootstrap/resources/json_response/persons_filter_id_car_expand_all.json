@@ -14,12 +14,6 @@
         },
         "vehicles": [
           {
-            "id": "Q2FyOmNveA==",
-            "manufacturer": "Volkswagen",
-            "model": "Coccinelle",
-            "seats_number": 4
-          },
-          {
             "id": "VHJ1Y2s6ZmVhcg==",
             "manufacturer": "Corbitt",
             "model": "50SD6",

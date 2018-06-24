@@ -5,6 +5,7 @@ Animal:
         fields:
             id:
                 type: "ID!"
+                builder: "Relay::GlobalId"
                 description: "The id of the animal"
             name:
                 type: "String!"

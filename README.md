@@ -21,6 +21,7 @@ This project implements :
 * Concepts :
     * :heavy_check_mark: Resolver
     * :heavy_check_mark: Query
+    * :heavy_check_mark: GlobalId
     * :heavy_multiplication_x: Type Inheritance
     * :heavy_multiplication_x: Pagination
     * :heavy_multiplication_x: Mutation
@@ -82,29 +83,30 @@ Here is an example of a graphQL query :
 
 ```graphql
 {
-  persons(id: "duffy") {
-    id
-    name
-    birth_date
-    created_at
-    pet {
-      ...on Animal {
+    persons(id: "UGVyc29uOmR1ZmZ5") {
         id
+        title
         name
-        breed
-      }
+        birth_date
+        created_at
+        pet {
+            ...on Animal {
+                id
+                name
+                breed
+            }
+        }
+        vehicles {
+            id
+            manufacturer
+            model
+            ...on Car {
+                seats_number
+            }
+            ...on Truck {
+                maximum_load
+            }
+        }
     }
-    vehicles {
-      id
-      manufacturer
-      model
-      ...on Car {
-        seats_number
-      }
-      ...on Truck {
-        maximum_load
-      }
-    }
-  }
 }
 ```

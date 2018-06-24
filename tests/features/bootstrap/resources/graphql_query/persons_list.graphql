@@ -1,8 +1,8 @@
 {
     persons {
         id
-        name
         title
+        name
         birth_date
         created_at
     }

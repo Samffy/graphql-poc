@@ -1,8 +1,8 @@
 {
-    persons(id: "duffy") {
+    persons(id: "UGVyc29uOmR1ZmZ5") {
         id
-        name
         title
+        name
         birth_date
         created_at
     }

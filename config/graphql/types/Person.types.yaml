@@ -5,6 +5,7 @@ Person:
         fields:
             id:
                 type: "ID!"
+                builder: "Relay::GlobalId"
                 description: "Internal identifier"
             name:
                 type: "String!"
@@ -25,7 +26,7 @@ Person:
                     id:
                         description: 'Resolves vehicle using its id.'
                         type: 'String'
-                resolve: "@=service('app.vehicles.resolver').resolveByPerson(value, args['id'])"
+                resolve: "@=service('app.vehicles.resolver').resolveByPerson(value, idFromGlobalId(args['id']))"
             pet:
                 type: "Pet"
                 description: "Pet of the person"

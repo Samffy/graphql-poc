@@ -8,14 +8,14 @@ Query:
                     id:
                         description: 'Resolves person using its id.'
                         type: 'String'
-                resolve: "@=resolver('Persons', [args['id']])"
+                resolve: "@=resolver('Persons', [idFromGlobalId(args['id'])])"
             person:
                 type: 'Person'
                 args:
                     id:
                         description: 'Resolves person using its id.'
                         type: 'String!'
-                resolve: "@=resolver('Person', [args['id']])"
+                resolve: "@=resolver('Person', [idFromGlobalId(args['id'])])"
             vehicles:
                 type: '[Vehicle]'
                 args:
@@ -25,18 +25,18 @@ Query:
                     id:
                         description: 'Resolves vehicle using its id.'
                         type: 'String'
-                resolve: "@=resolver('Vehicles', [args['owner'], args['id']])"
+                resolve: "@=resolver('Vehicles', [idFromGlobalId(args['owner']), idFromGlobalId(args['id'])])"
             car:
                 type: 'Car'
                 args:
                     id:
                         description: 'Resolves car using its id.'
                         type: 'String!'
-                resolve: "@=resolver('Car', [args['id']])"
+                resolve: "@=resolver('Car', [idFromGlobalId(args['id'])])"
             truck:
                 type: 'Truck'
                 args:
                     id:
                         description: 'Resolves truck using its id.'
                         type: 'String!'
-                resolve: "@=resolver('Truck', [args['id']])"
+                resolve: "@=resolver('Truck', [idFromGlobalId(args['id'])])"
