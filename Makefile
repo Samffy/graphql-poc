@@ -7,4 +7,7 @@ install:
 
 deploy:
 	composer install
-	php bin/console server:run
+	php bin/console server:start
+
+integration:
+	./vendor/bin/behat --suite=graphql tests/features

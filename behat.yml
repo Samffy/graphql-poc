@@ -1,0 +1,20 @@
+default:
+    suites:
+        graphql:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext: ~
+                - App\Tests\Features\Context\HttpQueryContext:
+                    projectDir: '%%kernel.project_dir%%'
+            paths:
+                - tests/features
+
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost:8000
+            sessions:
+                default:
+                    symfony2: ~
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: tests/features/bootstrap/bootstrap.php
+                class: App\Kernel

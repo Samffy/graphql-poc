@@ -1,0 +1,15 @@
+filter:
+    paths:
+        - 'src/*'
+    excluded_paths:
+            - 'tests/*'
+            - 'etc/*'
+            - 'bin/*'
+checks:
+    php: true
+
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                multiplicative: false

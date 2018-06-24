@@ -1,5 +1,8 @@
 # GraphQL POC in PHP
 
+[![Build Status](https://travis-ci.org/Samffy/graphql-poc.svg?branch=master)](https://travis-ci.org/Samffy/graphql-poc) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Samffy/graphql-poc/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Samffy/graphql-poc/?branch=master)
+
 This project is a proof of concept to test graphQL usage in PHP.  
 This work is based mainly on [Symfony framework](https://github.com/symfony/symfony/tree/4.0) and [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle/tree/0.11).
 

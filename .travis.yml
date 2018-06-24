@@ -1,0 +1,19 @@
+
+language: php
+dist: trusty
+php:
+    - 7.2
+
+cache:
+    apt: true
+
+before_install:
+  - export TZ=Europe/Paris
+  - echo 'date.timezone="Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+install:
+  - cp .env.dist .env
+  - make deploy
+
+script:
+  - make integration
