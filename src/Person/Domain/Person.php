@@ -43,13 +43,20 @@ class Person
     private $pet;
 
     /**
+     * @var array
+     */
+    private $vehicles;
+
+    /**
+     * Person constructor.
      * @param string $id
      * @param string $name
      * @param int $title
      * @param \DateTime|null $birthDate
      * @param AnimalInterface|null $pet
+     * @param array $vehicles
      */
-    public function __construct(string $id, string $name, int $title = self::TITLE_UNKNOWN, \DateTime $birthDate = null, ?AnimalInterface $pet = null)
+    public function __construct(string $id, string $name, int $title = self::TITLE_UNKNOWN, \DateTime $birthDate = null, ?AnimalInterface $pet = null, array $vehicles = [])
     {
         $this->id = $id;
         $this->name = $name;
@@ -57,6 +64,7 @@ class Person
         $this->birthDate = $birthDate;
         $this->createdAt = new \Datetime();
         $this->pet = $pet;
+        $this->vehicles = $vehicles;
     }
 
     /**
@@ -105,5 +113,13 @@ class Person
     public function getPet(): ?AnimalInterface
     {
         return $this->pet;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVehicles(): array
+    {
+        return $this->vehicles;
     }
 }

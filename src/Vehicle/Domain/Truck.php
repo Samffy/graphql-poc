@@ -2,23 +2,8 @@
 
 namespace App\Vehicle\Domain;
 
-class Truck implements VehicleInterface
+class Truck extends VehicleAbstract
 {
-    /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $manufacturer;
-
-    /**
-     * @var string
-     */
-    private $model;
-
     /**
      * @var int
      */
@@ -32,34 +17,9 @@ class Truck implements VehicleInterface
      */
     public function __construct(string $id, string $manufacturer, string $model, int $maximumLoad)
     {
-        $this->id = $id;
-        $this->manufacturer = $manufacturer;
-        $this->model = $model;
+        parent::__construct($id, $manufacturer, $model);
+
         $this->maximumLoad = $maximumLoad;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getManufacturer(): string
-    {
-        return $this->manufacturer;
-    }
-
-    /**
-     * @return string
-     */
-    public function getModel(): string
-    {
-        return $this->model;
     }
 
     /**

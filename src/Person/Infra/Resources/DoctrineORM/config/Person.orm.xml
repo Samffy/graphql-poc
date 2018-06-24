@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Person\Domain\Person" table="person">
+        <id name="id" type="text" />
+
+        <field name="name" type="text" length="255" />
+        <field name="title" length="integer" />
+        <field name="birthDate" type="datetime" />
+        <field name="createdAt" type="datetimetz" />
+
+        <many-to-one field="pet" target-entity="App\Animal\Domain\AnimalAbstract">
+            <join-column name="animal_id" referenced-column-name="id" />
+        </many-to-one>
+
+        <many-to-many field="vehicles" target-entity="App\Vehicle\Domain\VehicleAbstract">
+            <join-table name="person_has_vehicle">
+                <join-columns>
+                    <join-column name="person_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="vehicle_id" referenced-column-name="id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <unique-constraints>
+            <unique-constraint columns="id" name="person_idx" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

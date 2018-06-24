@@ -2,24 +2,44 @@
 
 namespace App\Person\Infra\Repository;
 
-use App\Common\Infra\Repository\DataRepository;
 use App\Person\App\Query\PersonsQuery;
 use App\Person\Domain\Person;
 use App\Person\Domain\PersonRepositoryInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 
 class PersonRepository implements PersonRepositoryInterface
 {
     /**
+     * @var ObjectManager
+     */
+    private $em;
+
+    /**
+     * @param ObjectManager $em
+     */
+    public function __construct(ObjectManager $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
      * @param string $id
-     * @return Person
+     * @return Person|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function find(string $id): ?Person
     {
-        if (array_key_exists($id, $this->getPersons())) {
-            return $this->getPersons()[$id];
-        }
+        $qb = $this->getRepository()->createQueryBuilder('p');
 
-        return null;
+        $qb->andWhere(
+            $qb->expr()->eq(
+                'p.id',
+                $qb->expr()->literal($id)
+            )
+        );
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     /**
@@ -28,14 +48,25 @@ class PersonRepository implements PersonRepositoryInterface
      */
     public function findAll(PersonsQuery $query): array
     {
+        $qb = $this->getRepository()->createQueryBuilder('p');
+
         if ($query->hasPersonId()) {
-            if (array_key_exists($query->getPersonId(), DataRepository::getPersons())) {
-                return [DataRepository::getPersons()[$query->getPersonId()]];
-            } else {
-                return [];
-            }
+            $qb->andWhere(
+                $qb->expr()->eq(
+                    'p.id',
+                    $qb->expr()->literal($query->getPersonId())
+                )
+            );
         }
 
-        return DataRepository::getPersons();
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return EntityRepository
+     */
+    private function getRepository(): EntityRepository
+    {
+        return $this->em->getRepository(Person::class);
     }
 }

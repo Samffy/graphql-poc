@@ -2,23 +2,8 @@
 
 namespace App\Vehicle\Domain;
 
-class Car implements VehicleInterface
+class Car extends VehicleAbstract
 {
-    /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $manufacturer;
-
-    /**
-     * @var string
-     */
-    private $model;
-
     /**
      * @var int
      */
@@ -32,34 +17,9 @@ class Car implements VehicleInterface
      */
     public function __construct(string $id, string $manufacturer, string $model, int $seatsNumber)
     {
-        $this->id = $id;
-        $this->manufacturer = $manufacturer;
-        $this->model = $model;
+        parent::__construct($id, $manufacturer, $model);
+
         $this->seatsNumber = $seatsNumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getManufacturer(): string
-    {
-        return $this->manufacturer;
-    }
-
-    /**
-     * @return string
-     */
-    public function getModel(): string
-    {
-        return $this->model;
     }
 
     /**

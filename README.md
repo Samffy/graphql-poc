@@ -26,7 +26,9 @@ This project implements :
 
 * git
 * composer
-* A Symfony 4.0 compatible environment
+* PHP 7.1.3 or higher
+* PDO-SQLite PHP extension enabled
+* [a Symfony 4.1 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
 
 ## Installation
 
@@ -42,16 +44,10 @@ Go to the project directory :
 $ cd graphql-poc
 ```
 
-Install dependencies : 
+Install and launch project using : 
 
 ```
-$ composer install
-```
-
-Launch Symfony web server : 
-
-```
-$ bin/console server:run
+$ make deploy
 ```
 
 Go to : http://localhost:8000/graphiql

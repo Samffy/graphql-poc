@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Animal\Domain\AnimalAbstract" table="animal" inheritance-type="SINGLE_TABLE">
+        <discriminator-column name="type" type="string" />
+        <discriminator-map>
+            <discriminator-mapping value="cat" class="App\Animal\Domain\Cat" />
+            <discriminator-mapping value="dog" class="App\Animal\Domain\Dog" />
+            <discriminator-mapping value="bear" class="App\Animal\Domain\Bear" />
+        </discriminator-map>
+
+        <id name="id" type="text" />
+        <field name="name" type="text" length="255" />
+
+        <unique-constraints>
+            <unique-constraint columns="id" name="animal_idx" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>
