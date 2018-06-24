@@ -73,7 +73,7 @@ If you update this project, you can dump the new version of the GraphQL schema u
 $ bin/console graphql:dump-schema --format=graphql --file=./config/graphql/schema.graphql
 ```
 
-## Queries
+### Queries
 
 This project use 2 mains types : `Person` and `Vehicle`  
 A person has a `Pet` and one `Vehicle` or more.   
@@ -110,4 +110,24 @@ Here is an example of a graphQL query :
         }
     }
 }
+```
+
+You can find many examples in the [functional tests](https://github.com/Samffy/graphql-poc/tree/master/tests/features/bootstrap/resources/graphql_query).
+
+## Developer tools
+
+This project use `Makefile` to simplify application usage.  
+[Take a look](https://github.com/Samffy/graphql-poc/blob/master/Makefile), you will find some useful commands.
+
+### Database
+
+This application use SQLite. Database is versioned and available in the `/var/app.db` file.  
+Schema is available in the [original migration](https://github.com/Samffy/graphql-poc/blob/master/src/Migrations/Version20180624103144.php). 
+
+### Fixtures
+
+If you corrupt data you can drop database and reload fixtures using this command : 
+
+```
+$ make install
 ```
