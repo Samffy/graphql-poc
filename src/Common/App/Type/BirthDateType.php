@@ -11,7 +11,7 @@ class BirthDateType
      *
      * @return string
      */
-    public static function serialize(\DateTime $value)
+    public static function serialize(\DateTime $value): string
     {
         return $value->format('Y-m-d');
     }
@@ -21,7 +21,7 @@ class BirthDateType
      *
      * @return \Datetime
      */
-    public static function parseValue($value)
+    public static function parseValue(string $value): \Datetime
     {
         return new \DateTime($value);
     }
@@ -31,7 +31,7 @@ class BirthDateType
      *
      * @return string
      */
-    public static function parseLiteral($valueNode)
+    public static function parseLiteral(Node $valueNode): string
     {
         return new \DateTime($valueNode->value);
     }

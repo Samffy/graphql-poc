@@ -10,5 +10,4 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-.idea/
 !/var/app.db
