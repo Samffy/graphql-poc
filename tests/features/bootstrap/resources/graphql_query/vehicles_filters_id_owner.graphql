@@ -1,0 +1,13 @@
+{
+    vehicles(owner: "duffy", id: "cox") {
+        id
+        manufacturer
+        model
+        ... on Car {
+            seats_number
+        }
+        ... on Truck {
+            maximum_load
+        }
+    }
+}

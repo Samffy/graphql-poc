@@ -1,0 +1,13 @@
+{
+    vehicles {
+        id
+        manufacturer
+        model
+        ... on Car {
+            seats_number
+        }
+        ... on Truck {
+            maximum_load
+        }
+    }
+}

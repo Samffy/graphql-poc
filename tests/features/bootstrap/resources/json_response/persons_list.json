@@ -4,18 +4,21 @@
       {
         "id": "duffy",
         "name": "Patrick Duffy",
+        "title": "Mr",
         "birth_date": "1949-03-17",
         "created_at": "2018-06-24T16:58:19+02:00"
       },
       {
         "id": "chuck",
         "name": "Chuck Norris",
+        "title": "Mr",
         "birth_date": "1940-03-10",
         "created_at": "2018-06-24T16:58:19+02:00"
       },
       {
         "id": "milano",
         "name": "Alyssa Milano",
+        "title": "Mrs",
         "birth_date": "1972-12-19",
         "created_at": "2018-06-24T16:58:19+02:00"
       }

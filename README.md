@@ -1,5 +1,6 @@
 # GraphQL POC in PHP
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
 [![Build Status](https://travis-ci.org/Samffy/graphql-poc.svg?branch=master)](https://travis-ci.org/Samffy/graphql-poc) 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Samffy/graphql-poc/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Samffy/graphql-poc/?branch=master)
 

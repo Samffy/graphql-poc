@@ -1,0 +1,18 @@
+{
+  "data": {
+    "vehicles": [
+      {
+        "id": "cox",
+        "manufacturer": "Volkswagen",
+        "model": "Coccinelle",
+        "seats_number": 4
+      },
+      {
+        "id": "fear",
+        "manufacturer": "Corbitt",
+        "model": "50SD6",
+        "maximum_load": 5000
+      }
+    ]
+  }
+}

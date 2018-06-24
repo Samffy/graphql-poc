@@ -1,0 +1,12 @@
+{
+  "data": {
+    "vehicles": [
+      {
+        "id": "cox",
+        "manufacturer": "Volkswagen",
+        "model": "Coccinelle",
+        "seats_number": 4
+      }
+    ]
+  }
+}

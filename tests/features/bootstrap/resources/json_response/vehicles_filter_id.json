@@ -1,0 +1,12 @@
+{
+  "data": {
+    "vehicles": [
+      {
+        "id": "clio",
+        "manufacturer": "Renault",
+        "model": "Clio 2",
+        "seats_number": 5
+      }
+    ]
+  }
+}

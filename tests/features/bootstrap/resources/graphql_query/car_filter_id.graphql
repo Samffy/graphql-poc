@@ -1,0 +1,8 @@
+{
+    car(id: "cox") {
+        id
+        manufacturer
+        model
+        seats_number
+    }
+}

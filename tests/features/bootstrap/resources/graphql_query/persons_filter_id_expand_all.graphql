@@ -1,0 +1,27 @@
+{
+    persons(id: "duffy") {
+        id
+        title
+        name
+        birth_date
+        created_at
+        pet {
+            ...on Animal {
+                id
+                name
+                breed
+            }
+        }
+        vehicles {
+            id
+            manufacturer
+            model
+            ...on Car {
+                seats_number
+            }
+            ...on Truck {
+                maximum_load
+            }
+        }
+    }
+}

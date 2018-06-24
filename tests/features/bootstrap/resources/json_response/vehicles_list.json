@@ -1,0 +1,42 @@
+{
+  "data": {
+    "vehicles": [
+      {
+        "id": "ateam",
+        "manufacturer": "GMC",
+        "model": "Vandura",
+        "maximum_load": 1000
+      },
+      {
+        "id": "dumb",
+        "manufacturer": "Ford",
+        "model": "Econoline",
+        "maximum_load": 600
+      },
+      {
+        "id": "fear",
+        "manufacturer": "Corbitt",
+        "model": "50SD6",
+        "maximum_load": 5000
+      },
+      {
+        "id": "clio",
+        "manufacturer": "Renault",
+        "model": "Clio 2",
+        "seats_number": 5
+      },
+      {
+        "id": "cox",
+        "manufacturer": "Volkswagen",
+        "model": "Coccinelle",
+        "seats_number": 4
+      },
+      {
+        "id": "polo",
+        "manufacturer": "Volkswagen",
+        "model": "Polo",
+        "seats_number": 5
+      }
+    ]
+  }
+}

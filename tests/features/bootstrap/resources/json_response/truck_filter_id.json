@@ -1,0 +1,10 @@
+{
+  "data": {
+    "truck": {
+      "id": "ateam",
+      "manufacturer": "GMC",
+      "model": "Vandura",
+      "maximum_load": 1000
+    }
+  }
+}

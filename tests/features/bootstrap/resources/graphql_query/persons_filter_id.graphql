@@ -1,5 +1,5 @@
 {
-    persons {
+    persons(id: "duffy") {
         id
         name
         title

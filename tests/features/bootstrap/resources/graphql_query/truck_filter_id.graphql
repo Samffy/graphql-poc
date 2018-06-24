@@ -1,0 +1,8 @@
+{
+    truck(id: "ateam") {
+        id
+        manufacturer
+        model
+        maximum_load
+    }
+}
