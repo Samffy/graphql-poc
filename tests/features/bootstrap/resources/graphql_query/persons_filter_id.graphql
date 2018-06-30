@@ -4,6 +4,5 @@
         title
         name
         birth_date
-        created_at
     }
 }

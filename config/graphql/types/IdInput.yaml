@@ -1,0 +1,6 @@
+IdInput:
+    type: input-object
+    config:
+        fields:
+            id:
+                type: "String!"

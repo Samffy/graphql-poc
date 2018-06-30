@@ -2,9 +2,11 @@
 
 namespace App\Tests\Features\Context;
 
+use Assert\Assert;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\MinkExtension\Context\MinkContext;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 class HttpQueryContext implements Context
 {
@@ -27,19 +29,26 @@ class HttpQueryContext implements Context
         $this->projectDir = $projectDir;
     }
 
-    /** @BeforeScenario */
+    /**
+     * @BeforeScenario
+     * @param BeforeScenarioScope $scope
+     */
     public function gatherContexts(BeforeScenarioScope $scope)
     {
-        $environment = $scope->getEnvironment();
-        $this->client = $environment->getContext(MinkContext::class)->getSession()->getDriver()->getClient();
+        $this->client = $scope
+            ->getEnvironment()
+            ->getContext(MinkContext::class)
+            ->getSession()
+            ->getDriver()
+            ->getClient();
     }
 
     /**
      * @When I submit the query :name
-     * @param $name
+     * @param string $name
      * @throws \Exception
      */
-    public function iSubmitTheQuery($name)
+    public function iSubmitTheQuery(string $name)
     {
         $query = $this->loadGraphqlQuery($name);
 
@@ -59,18 +68,48 @@ class HttpQueryContext implements Context
      * @param $filename
      * @throws \Exception
      */
-    public function theJsonResponseMustBeEqualsToJsonResponse($filename)
+    public function theJsonResponseMustBeEqualsToJsonResponse(string $filename)
     {
         $response = json_decode($this->content, true);
         $expected = json_decode($this->loadJsonResponse($filename), true);
 
         if (serialize($response) !== serialize($expected)) {
-            echo "\n\nExpected:\n";
+            echo "\n\nexpected:\n";
             echo json_encode($expected, JSON_PRETTY_PRINT);
-            echo "\n\nResponse:\n";
+            echo "\n\nresponse:\n";
             echo json_encode($response, JSON_PRETTY_PRINT);
             throw new \Exception('Actual response does not match expected response.');
         }
+    }
+
+    /**
+     * @Then The json element at :jsonPath should be equal to :expectedValue
+     *
+     * @param string $jsonPath
+     * @param string $expectedValue
+     * @throws \Exception
+     */
+    public function theJsonElementAtShouldBeEqualTo(string $jsonPath, string $expectedValue)
+    {
+        $response = json_decode($this->content, true);
+
+        $propertyAccessor = new PropertyAccessor(false, true);
+
+        if ($propertyAccessor->isReadable($response, $jsonPath) == false) {
+            throw new \Exception(sprintf('Element %s does not exist', $jsonPath));
+        }
+
+        $actualValue = $propertyAccessor->getValue($response, $jsonPath);
+
+        Assert::that($expectedValue)->eq(
+            $actualValue,
+            sprintf(
+                "Json element at %s is invalid\n\t- expected : %s\n\t- response : %s",
+                $jsonPath,
+                $expectedValue,
+                $actualValue
+            )
+        );
     }
 
     /**
@@ -78,7 +117,7 @@ class HttpQueryContext implements Context
      * @return string
      * @throws \Exception
      */
-    private function loadGraphqlQuery($name): string
+    private function loadGraphqlQuery(string $name): string
     {
         $filepath = sprintf("%s/tests/features/bootstrap/resources/graphql_query/%s.graphql", $this->projectDir, $name);
 
@@ -94,7 +133,7 @@ class HttpQueryContext implements Context
      * @return string
      * @throws \Exception
      */
-    private function loadJsonResponse($name): string
+    private function loadJsonResponse(string $name): string
     {
         $filepath = sprintf("%s/tests/features/bootstrap/resources/json_response/%s.json", $this->projectDir, $name);
 

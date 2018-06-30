@@ -29,4 +29,15 @@ class Car extends VehicleAbstract
     {
         return $this->seatsNumber;
     }
+
+    /**
+     * @param int $seatsNumber
+     * @return Car
+     */
+    public function setSeatsNumber(int $seatsNumber): Car
+    {
+        $this->seatsNumber = $seatsNumber;
+
+        return $this;
+    }
 }

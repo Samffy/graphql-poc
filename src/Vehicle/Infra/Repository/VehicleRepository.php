@@ -6,10 +6,12 @@ use App\Common\Infra\Repository\DataRepository;
 use App\Vehicle\App\Query\VehiclesQuery;
 use App\Person\Domain\Person;
 use App\Vehicle\Domain\VehicleAbstract;
+use App\Vehicle\Domain\VehicleInterface;
+use App\Vehicle\Domain\VehicleRepositoryInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 
-class VehicleRepository
+class VehicleRepository implements VehicleRepositoryInterface
 {
     /**
      * @var ObjectManager
@@ -79,9 +81,49 @@ class VehicleRepository
     }
 
     /**
+     * @param string $id
+     * @return Car|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function find(string $id): ?VehicleInterface
+    {
+        $qb = $this->getRepository()->createQueryBuilder('v');
+
+        $qb->andWhere(
+            $qb->expr()->eq(
+                'v.id',
+                $qb->expr()->literal($id)
+            )
+        );
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @param VehicleInterface $vehicle
+     * @return VehicleInterface
+     */
+    public function save(VehicleInterface $vehicle): VehicleInterface
+    {
+        $this->em->persist($vehicle);
+        $this->em->flush();
+
+        return $vehicle;
+    }
+
+    /**
+     * @param VehicleInterface $vehicle
+     */
+    public function delete(VehicleInterface $vehicle): void
+    {
+        $this->em->remove($vehicle);
+        $this->em->flush();
+    }
+
+    /**
      * @return EntityRepository
      */
-    private function getRepository(): EntityRepository
+    protected function getRepository(): EntityRepository
     {
         return $this->em->getRepository(VehicleAbstract::class);
     }

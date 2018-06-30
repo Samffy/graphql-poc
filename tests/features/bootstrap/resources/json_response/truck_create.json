@@ -1,0 +1,10 @@
+{
+  "data": {
+    "CreateTruck": {
+      "id": "VHJ1Y2s6c3BlZWQ=",
+      "manufacturer": "GM",
+      "model": "New Look bus",
+      "maximum_load": 2000
+    }
+  }
+}

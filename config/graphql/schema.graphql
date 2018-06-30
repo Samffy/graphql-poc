@@ -39,6 +39,13 @@ type Car implements Vehicle {
   seats_number: Int!
 }
 
+input CarInput {
+  id: String!
+  manufacturer: String!
+  model: String!
+  seats_number: Int!
+}
+
 # Type of animal manage by the app
 type Cat implements Animal {
   # The id of the animal
@@ -63,6 +70,19 @@ type Dog implements Animal {
 
   # Breed of the animal
   breed: String!
+}
+
+input IdInput {
+  id: String!
+}
+
+type Mutation {
+  CreateCar(input: CarInput!): Car!
+  UpdateCar(input: CarInput!): Car!
+  DeleteCar(input: IdInput!): ID!
+  CreateTruck(input: TruckInput!): Truck!
+  UpdateTruck(input: TruckInput!): Truck!
+  DeleteTruck(input: IdInput!): ID!
 }
 
 # Person manage by the app
@@ -142,6 +162,13 @@ type Truck implements Vehicle {
   model: String!
 
   # Maximum load of the truck
+  maximum_load: Int!
+}
+
+input TruckInput {
+  id: String!
+  manufacturer: String!
+  model: String!
   maximum_load: Int!
 }
 

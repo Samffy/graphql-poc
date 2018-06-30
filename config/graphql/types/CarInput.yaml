@@ -1,0 +1,12 @@
+CarInput:
+    type: input-object
+    config:
+        fields:
+            id:
+                type: "String!"
+            manufacturer:
+                type: "String!"
+            model:
+                type: "String!"
+            seats_number:
+                type: "Int!"

@@ -29,4 +29,15 @@ class Truck extends VehicleAbstract
     {
         return $this->maximumLoad;
     }
+
+    /**
+     * @param int $maximumLoad
+     * @return Truck
+     */
+    public function setMaximumLoad(int $maximumLoad): Truck
+    {
+        $this->maximumLoad = $maximumLoad;
+
+        return $this;
+    }
 }
