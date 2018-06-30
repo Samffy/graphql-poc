@@ -48,10 +48,32 @@ abstract class VehicleAbstract implements VehicleInterface
     }
 
     /**
+     * @param string $manufacturer
+     * @return VehicleInterface
+     */
+    public function setManufacturer(string $manufacturer): VehicleInterface
+    {
+        $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getModel(): string
     {
         return $this->model;
+    }
+
+    /**
+     * @param string $model
+     * @return VehicleInterface
+     */
+    public function setModel(string $model): VehicleInterface
+    {
+        $this->model = $model;
+
+        return $this;
     }
 }

@@ -44,15 +44,30 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: "app.vehicles.resolver" }
 
-    app.car.resolver:
-        class: App\Vehicle\App\Resolver\CarResolver
+    app.car.mutation.create:
+        class: App\Vehicle\App\Mutation\CarMutation
         tags:
-            - { name: overblog_graphql.resolver }
+            - { name: overblog_graphql.mutation, alias: 'create_car', method: 'createCar' }
 
-    app.truck.resolver:
-        class: App\Vehicle\App\Resolver\TruckResolver
+    app.car.mutation.update:
+        class: App\Vehicle\App\Mutation\CarMutation
         tags:
-            - { name: overblog_graphql.resolver }
+            - { name: overblog_graphql.mutation, alias: 'update_car', method: 'updateCar' }
+
+    app.truck.mutation.create:
+        class: App\Vehicle\App\Mutation\TruckMutation
+        tags:
+            - { name: overblog_graphql.mutation, alias: 'create_truck', method: 'createTruck' }
+
+    app.truck.mutation.update:
+        class: App\Vehicle\App\Mutation\TruckMutation
+        tags:
+            - { name: overblog_graphql.mutation, alias: 'update_truck', method: 'updateTruck' }
+
+    app.vehicle.mutation.delete:
+        class: App\Vehicle\App\Mutation\VehicleMutation
+        tags:
+            - { name: overblog_graphql.mutation, alias: 'delete_vehicle', method: 'deleteVehicle' }
 
     app.animal.resolver:
         class: App\Animal\App\Resolver\AnimalResolver

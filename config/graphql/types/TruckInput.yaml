@@ -1,0 +1,12 @@
+TruckInput:
+    type: input-object
+    config:
+        fields:
+            id:
+                type: "String!"
+            manufacturer:
+                type: "String!"
+            model:
+                type: "String!"
+            maximum_load:
+                type: "Int!"

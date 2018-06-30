@@ -1,0 +1,3 @@
+mutation {
+    DeleteTruck(input: {id: "VHJ1Y2s6c3BlZWQ="})
+}

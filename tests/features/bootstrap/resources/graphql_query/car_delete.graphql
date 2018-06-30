@@ -1,0 +1,3 @@
+mutation {
+    DeleteCar(input: {id: "Q2FyOnRpbWU="})
+}

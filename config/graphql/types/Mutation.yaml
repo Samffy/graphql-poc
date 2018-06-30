@@ -1,0 +1,40 @@
+Mutation:
+    type: object
+    config:
+        fields:
+            CreateCar:
+                type: Car!
+                resolve: "@=mutation('create_car', [idFromGlobalId(args['input']['id']), args['input']['manufacturer'], args['input']['model'], args['input']['seats_number']])"
+                args:
+                    input:
+                        type: CarInput!
+            UpdateCar:
+                type: Car!
+                resolve: "@=mutation('update_car', [idFromGlobalId(args['input']['id']), args['input']['manufacturer'], args['input']['model'], args['input']['seats_number']])"
+                args:
+                    input:
+                        type: CarInput!
+            DeleteCar:
+                type: ID!
+                resolve: "@=mutation('delete_vehicle', [args['input']['id']])"
+                args:
+                    input:
+                        type: IdInput!
+            CreateTruck:
+                type: Truck!
+                resolve: "@=mutation('create_truck', [idFromGlobalId(args['input']['id']), args['input']['manufacturer'], args['input']['model'], args['input']['maximum_load']])"
+                args:
+                    input:
+                        type: TruckInput!
+            UpdateTruck:
+                type: Truck!
+                resolve: "@=mutation('update_truck', [idFromGlobalId(args['input']['id']), args['input']['manufacturer'], args['input']['model'], args['input']['maximum_load']])"
+                args:
+                    input:
+                        type: TruckInput!
+            DeleteTruck:
+                type: ID!
+                resolve: "@=mutation('delete_vehicle', [args['input']['id']])"
+                args:
+                    input:
+                        type: IdInput!

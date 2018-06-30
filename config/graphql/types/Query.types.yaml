@@ -32,11 +32,11 @@ Query:
                     id:
                         description: 'Resolves car using its id.'
                         type: 'String!'
-                resolve: "@=resolver('Car', [idFromGlobalId(args['id'])])"
+                resolve: "@=resolver('Vehicle', [idFromGlobalId(args['id'])])"
             truck:
                 type: 'Truck'
                 args:
                     id:
                         description: 'Resolves truck using its id.'
                         type: 'String!'
-                resolve: "@=resolver('Truck', [idFromGlobalId(args['id'])])"
+                resolve: "@=resolver('Vehicle', [idFromGlobalId(args['id'])])"

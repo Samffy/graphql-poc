@@ -1,0 +1,8 @@
+mutation {
+    CreateCar(input: {id: "Q2FyOnRpbWU=", manufacturer: "DMC", model: "DeLorean DMC-12", seats_number: 4}) {
+        id
+        manufacturer
+        model
+        seats_number
+    }
+}
