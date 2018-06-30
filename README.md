@@ -16,7 +16,7 @@ This project implements :
     * :heavy_check_mark: Interface
     * :heavy_check_mark: Union
     * :heavy_check_mark: Enum
-    * :heavy_multiplication_x: Input Object
+    * :heavy_check_mark: Input Object
     * :heavy_check_mark: Lists
     * :heavy_check_mark: Non-Null
 * Concepts :
