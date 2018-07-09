@@ -3,11 +3,14 @@
 namespace App\Vehicle\App\Mutation;
 
 use App\Common\App\Transformer\AppGlobalId;
+use App\Common\Domain\MutationException;
+use App\Common\Domain\ValidationException;
 use App\Vehicle\Domain\Car;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
 use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CarMutation implements MutationInterface, AliasedInterface
 {
@@ -17,11 +20,18 @@ class CarMutation implements MutationInterface, AliasedInterface
     private $vehicleRepository;
 
     /**
-     * @param VehicleRepositoryInterface $vehicleRepository
+     * @var ValidatorInterface
      */
-    public function __construct(VehicleRepositoryInterface $vehicleRepository)
+    private $validator;
+
+    /**
+     * @param VehicleRepositoryInterface $vehicleRepository
+     * @param ValidatorInterface $validator
+     */
+    public function __construct(VehicleRepositoryInterface $vehicleRepository, ValidatorInterface $validator)
     {
         $this->vehicleRepository = $vehicleRepository;
+        $this->validator = $validator;
     }
 
     /**
@@ -29,10 +39,10 @@ class CarMutation implements MutationInterface, AliasedInterface
      * @param string $manufacturer
      * @param string $model
      * @param int $seatsNumber
-     * @return Car
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @return Car|\App\Vehicle\Domain\VehicleInterface|null
+     * @throws ValidationException
      */
-    public function createCar(string $id, string $manufacturer, string $model, int $seatsNumber): Car
+    public function createCar(string $id, string $manufacturer, string $model, int $seatsNumber)
     {
         if ($car = $this->vehicleRepository->find($id)) {
             throw new UserError(sprintf('Car [%s] already exist', AppGlobalId::toGlobalId('Car', $id)));
@@ -40,9 +50,15 @@ class CarMutation implements MutationInterface, AliasedInterface
             return $car;
         }
 
-        return $this->vehicleRepository->save(
-            new Car($id, $manufacturer, $model, $seatsNumber)
-        );
+        $car = new Car($id, $manufacturer, $model, $seatsNumber);
+
+        $constraintViolations = $this->validator->validate($car);
+
+        if ($constraintViolations->count()) {
+            throw new ValidationException($constraintViolations, 'Car mutation is invalid');
+        }
+
+        return $this->vehicleRepository->save($car);
     }
 
     /**

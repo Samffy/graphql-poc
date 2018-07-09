@@ -1,0 +1,20 @@
+App\Vehicle\Domain\VehicleAbstract:
+    properties:
+        manufacturer:
+            - NotBlank: ~
+            - Length:
+                min: 2
+        model:
+            - NotBlank: ~
+            - Length:
+                min: 2
+
+App\Vehicle\Domain\Car:
+    properties:
+        seatsNumber:
+            - NotBlank: ~
+
+App\Vehicle\Domain\Truck:
+    properties:
+        maximumLoad:
+            - NotBlank: ~

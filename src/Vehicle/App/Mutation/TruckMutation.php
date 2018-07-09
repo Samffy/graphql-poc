@@ -3,11 +3,14 @@
 namespace App\Vehicle\App\Mutation;
 
 use App\Common\App\Transformer\AppGlobalId;
+use App\Common\Domain\MutationException;
+use App\Common\Domain\ValidationException;
 use App\Vehicle\Domain\Truck;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
 use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class TruckMutation implements MutationInterface, AliasedInterface
 {
@@ -17,11 +20,18 @@ class TruckMutation implements MutationInterface, AliasedInterface
     private $vehicleRepository;
 
     /**
-     * @param VehicleRepositoryInterface $vehicleRepository
+     * @var ValidatorInterface
      */
-    public function __construct(VehicleRepositoryInterface $vehicleRepository)
+    private $validator;
+
+    /**
+     * @param VehicleRepositoryInterface $vehicleRepository
+     * @param ValidatorInterface $validator
+     */
+    public function __construct(VehicleRepositoryInterface $vehicleRepository, ValidatorInterface $validator)
     {
         $this->vehicleRepository = $vehicleRepository;
+        $this->validator = $validator;
     }
 
     /**
@@ -30,7 +40,7 @@ class TruckMutation implements MutationInterface, AliasedInterface
      * @param string $model
      * @param int $maximumLoad
      * @return Truck
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws ValidationException
      */
     public function createTruck(string $id, string $manufacturer, string $model, int $maximumLoad): Truck
     {
@@ -40,9 +50,15 @@ class TruckMutation implements MutationInterface, AliasedInterface
             return $truck;
         }
 
-        return $this->vehicleRepository->save(
-            new Truck($id, $manufacturer, $model, $maximumLoad)
-        );
+        $truck = new Truck($id, $manufacturer, $model, $maximumLoad);
+
+        $constraintViolations = $this->validator->validate($truck);
+
+        if ($constraintViolations->count()) {
+            throw new ValidationException($constraintViolations, 'Truck mutation is invalid');
+        }
+
+        return $this->vehicleRepository->save($truck);
     }
 
     /**

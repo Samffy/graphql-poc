@@ -73,3 +73,10 @@ services:
         class: App\Animal\App\Resolver\AnimalResolver
         tags:
             - { name: overblog_graphql.resolver, alias: "animal_type", method: "resolveType" }
+
+    app.formatter.validation_exception:
+        class: App\Common\App\Formatter\ValidationExceptionFormatter
+        public: false
+        tags:
+        - { name: kernel.event_listener, event: graphql.error_formatting, method: onErrorFormatting }
+
