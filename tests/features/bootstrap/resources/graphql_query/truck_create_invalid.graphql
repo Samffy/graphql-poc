@@ -1,0 +1,8 @@
+mutation {
+    CreateTruck(input: {id: "VHJ1Y2s6c3BlZWQ=", manufacturer: "GM", model: "", maximum_load: 2000}) {
+        id
+        manufacturer
+        model
+        maximum_load
+    }
+}

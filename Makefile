@@ -10,4 +10,4 @@ deploy:
 	php bin/console server:start
 
 integration:
-	./vendor/bin/behat --suite=graphql tests/features
+	bin/behat --suite=graphql tests/features
