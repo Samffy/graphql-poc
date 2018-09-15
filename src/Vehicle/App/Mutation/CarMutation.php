@@ -2,12 +2,11 @@
 
 namespace App\Vehicle\App\Mutation;
 
-use App\Common\App\Transformer\AppGlobalId;
-use App\Common\Domain\MutationException;
 use App\Common\Domain\ValidationException;
+use App\Vehicle\App\Factory\VehicleFactory;
 use App\Vehicle\Domain\Car;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
-use GraphQL\Error\UserError;
+use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -35,50 +34,46 @@ class CarMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param string $id
-     * @param string $manufacturer
-     * @param string $model
-     * @param int $seatsNumber
-     * @return Car|\App\Vehicle\Domain\VehicleInterface|null
+     * @param Argument $argument
+     * @return Car
      * @throws ValidationException
      */
-    public function createCar(string $id, string $manufacturer, string $model, int $seatsNumber)
+    public function createCar(Argument $argument): Car
     {
-        if ($car = $this->vehicleRepository->find($id)) {
-            throw new UserError(sprintf('Car [%s] already exist', AppGlobalId::toGlobalId('Car', $id)));
+        $carInput = VehicleFactory::createCarInput($argument);
 
-            return $car;
-        }
-
-        $car = new Car($id, $manufacturer, $model, $seatsNumber);
-
-        $constraintViolations = $this->validator->validate($car);
+        $constraintViolations = $this->validator->validate($carInput, null, ['create']);
 
         if ($constraintViolations->count()) {
             throw new ValidationException($constraintViolations, 'Car mutation is invalid');
         }
 
-        return $this->vehicleRepository->save($car);
+        return $this->vehicleRepository->save(
+            VehicleFactory::createCar($carInput)
+        );
     }
 
     /**
-     * @param string $id
-     * @param string $manufacturer
-     * @param string $model
-     * @param int $seatsNumber
+     * @param Argument $argument
      * @return Car
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws ValidationException
      */
-    public function updateCar(string $id, string $manufacturer, string $model, int $seatsNumber): Car
+    public function updateCar(Argument $argument): Car
     {
-        if (!$car = $this->vehicleRepository->find($id)) {
-            throw new UserError(sprintf('Car [%s] not found', AppGlobalId::toGlobalId('Car', $id)));
+        $carInput = VehicleFactory::createCarInput($argument);
+
+        $constraintViolations = $this->validator->validate($carInput, null, ['update']);
+
+        if ($constraintViolations->count()) {
+            throw new ValidationException($constraintViolations, 'Car mutation is invalid');
         }
 
+        $car = $this->vehicleRepository->find($carInput->getId());
+
         $car
-            ->setManufacturer($manufacturer)
-            ->setModel($model)
-            ->setSeatsNumber($seatsNumber)
+            ->setManufacturer($carInput->getManufacturer())
+            ->setModel($carInput->getModel())
+            ->setSeatsNumber($carInput->getSeatsNumber())
         ;
 
         return $this->vehicleRepository->save($car);

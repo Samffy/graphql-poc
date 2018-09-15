@@ -20,7 +20,7 @@ class ValidationExceptionFormatter
             $violations = $error->getViolations();
             foreach($violations as $violation) {
                 $errors[] = [
-                    'field' => $violation->getPropertyPath(),
+                    'name' => $violation->getPropertyPath(),
                     'message' => $violation->getMessage(),
                 ];
             }

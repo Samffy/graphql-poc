@@ -2,12 +2,11 @@
 
 namespace App\Vehicle\App\Mutation;
 
-use App\Common\App\Transformer\AppGlobalId;
-use App\Common\Domain\MutationException;
 use App\Common\Domain\ValidationException;
+use App\Vehicle\App\Factory\VehicleFactory;
 use App\Vehicle\Domain\Truck;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
-use GraphQL\Error\UserError;
+use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -35,50 +34,46 @@ class TruckMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param string $id
-     * @param string $manufacturer
-     * @param string $model
-     * @param int $maximumLoad
+     * @param Argument $argument
      * @return Truck
      * @throws ValidationException
      */
-    public function createTruck(string $id, string $manufacturer, string $model, int $maximumLoad): Truck
+    public function createTruck(Argument $argument): Truck
     {
-        if ($truck = $this->vehicleRepository->find($id)) {
-            throw new UserError(sprintf('Truck [%s] already exist', AppGlobalId::toGlobalId('Truck', $id)));
+        $truckInput = VehicleFactory::createTruckInput($argument);
 
-            return $truck;
-        }
-
-        $truck = new Truck($id, $manufacturer, $model, $maximumLoad);
-
-        $constraintViolations = $this->validator->validate($truck);
+        $constraintViolations = $this->validator->validate($truckInput, null, ['create']);
 
         if ($constraintViolations->count()) {
             throw new ValidationException($constraintViolations, 'Truck mutation is invalid');
         }
 
-        return $this->vehicleRepository->save($truck);
+        return $this->vehicleRepository->save(
+            VehicleFactory::createTruck($truckInput)
+        );
     }
 
     /**
-     * @param string $id
-     * @param string $manufacturer
-     * @param string $model
-     * @param int $maximumLoad
+     * @param Argument $argument
      * @return Truck
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws ValidationException
      */
-    public function updateTruck(string $id, string $manufacturer, string $model, int $maximumLoad): Truck
+    public function updateTruck(Argument $argument): Truck
     {
-        if (!$truck = $this->vehicleRepository->find($id)) {
-            throw new UserError(sprintf('Truck [%s] not found', AppGlobalId::toGlobalId('Truck', $id)));
+        $truckInput = VehicleFactory::createTruckInput($argument);
+
+        $constraintViolations = $this->validator->validate($truckInput, null, ['update']);
+
+        if ($constraintViolations->count()) {
+            throw new ValidationException($constraintViolations, 'Truck mutation is invalid');
         }
 
+        $truck = $this->vehicleRepository->find($truckInput->getId());
+
         $truck
-            ->setManufacturer($manufacturer)
-            ->setModel($model)
-            ->setMaximumLoad($maximumLoad)
+            ->setManufacturer($truckInput->getManufacturer())
+            ->setModel($truckInput->getModel())
+            ->setMaximumLoad($truckInput->getMaximumLoad())
         ;
 
         return $this->vehicleRepository->save($truck);

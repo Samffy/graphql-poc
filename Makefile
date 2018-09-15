@@ -10,4 +10,5 @@ deploy:
 	php bin/console server:start
 
 integration:
+	php bin/console doctrine:fixtures:load -q
 	bin/behat --suite=graphql tests/features

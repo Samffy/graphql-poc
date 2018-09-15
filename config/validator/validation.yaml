@@ -1,20 +1,52 @@
 App\Vehicle\Domain\VehicleAbstract:
     properties:
+        id:
+            - NotBlank:
+                groups: [create, update]
+            - Type:
+                type: string
+                groups: [create, update]
         manufacturer:
-            - NotBlank: ~
+            - NotBlank:
+                groups: [create, update]
             - Length:
                 min: 2
+                groups: [create, update]
         model:
-            - NotBlank: ~
+            - NotBlank:
+                groups: [create, update]
             - Length:
                 min: 2
+                groups: [create, update]
 
-App\Vehicle\Domain\Car:
+App\Vehicle\Domain\Input\CarInput:
     properties:
+        id:
+          - App\Common\Infra\Validator\IdDoesNotExistConstraint:
+              fqcn: App\Vehicle\Domain\Car
+              groups: [create]
+          - App\Common\Infra\Validator\IdExistConstraint:
+              fqcn: App\Vehicle\Domain\Car
+              groups: [update]
         seatsNumber:
-            - NotBlank: ~
+            - NotBlank:
+                groups: [create, update]
+            - Type:
+                type: integer
+                groups: [create, update]
 
-App\Vehicle\Domain\Truck:
+App\Vehicle\Domain\Input\TruckInput:
     properties:
+        id:
+            - App\Common\Infra\Validator\IdDoesNotExistConstraint:
+                fqcn: App\Vehicle\Domain\Truck
+                groups: [create]
+            - App\Common\Infra\Validator\IdExistConstraint:
+                fqcn: App\Vehicle\Domain\Truck
+                groups: [update]
         maximumLoad:
-            - NotBlank: ~
+            - NotBlank:
+                groups: [create, update]
+            - Type:
+                type: integer
+                groups: [create, update]

@@ -113,17 +113,17 @@ Here is an example of a graphQL query :
 }
 ```
 
-You can find many examples in the [functional tests](https://github.com/Samffy/graphql-poc/tree/master/tests/features/bootstrap/resources/graphql_query).
+You can find many examples in the [functional tests](tests/features/bootstrap/resources/graphql_query).
 
 ## Developer tools
 
 This project use `Makefile` to simplify application usage.  
-[Take a look](https://github.com/Samffy/graphql-poc/blob/master/Makefile), you will find some useful commands.
+[Take a look](Makefile), you will find some useful commands.
 
 ### Database
 
 This application use SQLite. Database is versioned and available in the `/var/app.db` file.  
-Schema is available in the [original migration](https://github.com/Samffy/graphql-poc/blob/master/src/Migrations/Version20180624103144.php). 
+Schema is available in the [original migration](src/Migrations/Version20180624103144.php). 
 
 ### Fixtures
 
@@ -132,3 +132,16 @@ If you corrupt data you can drop database and reload fixtures using this command
 ```
 $ make install
 ```
+
+### Tests
+
+There is some functional tests, read it to see some useful examples.  
+It basically launch [queries](tests/features/bootstrap/resources/graphql_query/) and check response.  
+
+To launch them use : 
+
+```
+$ make integration
+```
+
+:warning: It will truncate database and dump default fixtures.

@@ -7,17 +7,17 @@ abstract class VehicleAbstract implements VehicleInterface
     /**
      * @var string
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $manufacturer;
+    protected $manufacturer;
 
     /**
      * @var string
      */
-    private $model;
+    protected $model;
 
     /**
      * @param string $id
