@@ -20,4 +20,19 @@ class AppGlobalId extends GlobalId
 
         return $decodedGlobalId['id'];
     }
+
+    /**
+     * @param $globalId
+     * @return string|null
+     */
+    public static function getTypeFromGlobalId(?string $globalId): ?string
+    {
+        $decodedGlobalId = parent::fromGlobalId($globalId);
+
+        if (!$decodedGlobalId['type']) {
+            return null;
+        }
+
+        return $decodedGlobalId['type'];
+    }
 }

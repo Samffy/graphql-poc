@@ -1,0 +1,8 @@
+mutation {
+    UpdateTruck(input: {id: "VHJ1Y2s6T3B0aW11cyBQcmltZQ==", manufacturer: "Transformer", model: "Optimus Prime", maximum_load: 5000}) {
+        id
+        manufacturer
+        model
+        maximum_load
+    }
+}

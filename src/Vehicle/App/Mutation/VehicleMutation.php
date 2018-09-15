@@ -27,14 +27,17 @@ class VehicleMutation implements MutationInterface, AliasedInterface
     /**
      * @param string $globalId
      * @return string
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function deleteVehicle(string $globalId): string
     {
         $id = AppGlobalId::getIdFromGlobalId($globalId);
 
         if (!$vehicle = $this->vehicleRepository->find($id)) {
-            throw new UserError(sprintf('Vehicle [%s] not found', $globalId));
+            throw new UserError(sprintf(
+                '%s [%s] not found',
+                AppGlobalId::getTypeFromGlobalId($globalId) ,
+                $globalId
+            ));
         }
 
         $this->vehicleRepository->delete($vehicle);

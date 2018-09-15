@@ -1,0 +1,8 @@
+mutation {
+    UpdateCar(input: {id: "Q2FyOmJhdG1vYmlsZQ==", manufacturer: "Wayne Corporation", model: "Batmobile", seats_number: 1}) {
+        id
+        manufacturer
+        model
+        seats_number
+    }
+}

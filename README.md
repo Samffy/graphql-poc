@@ -132,3 +132,16 @@ If you corrupt data you can drop database and reload fixtures using this command
 ```
 $ make install
 ```
+
+### Tests
+
+There is some functional tests, read it to see some useful examples.  
+It basically launch [queries](tests/features/bootstrap/resources/graphql_query/) and check response.  
+
+To launch them use : 
+
+```
+$ make integration
+```
+
+:warning: It will truncate database and dump default fixtures.
