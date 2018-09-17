@@ -7,21 +7,21 @@ Query:
                 args:
                     id:
                         description: 'Resolves person using its id.'
-                        type: 'String'
+                        type: 'ID'
                 resolve: "@=resolver('Persons', [idFromGlobalId(args['id'])])"
             person:
                 type: 'Person'
                 args:
                     id:
                         description: 'Resolves person using its id.'
-                        type: 'String!'
+                        type: 'ID!'
                 resolve: "@=resolver('Person', [idFromGlobalId(args['id'])])"
             vehicles:
                 type: '[Vehicle]'
                 args:
                     owner:
                         description: 'Resolves vehicle using its owner id.'
-                        type: 'String'
+                        type: 'ID'
                     id:
                         description: 'Resolves vehicle using its id.'
                         type: 'String'
@@ -31,12 +31,12 @@ Query:
                 args:
                     id:
                         description: 'Resolves car using its id.'
-                        type: 'String!'
+                        type: 'ID!'
                 resolve: "@=resolver('Vehicle', [idFromGlobalId(args['id'])])"
             truck:
                 type: 'Truck'
                 args:
                     id:
                         description: 'Resolves truck using its id.'
-                        type: 'String!'
+                        type: 'ID!'
                 resolve: "@=resolver('Vehicle', [idFromGlobalId(args['id'])])"

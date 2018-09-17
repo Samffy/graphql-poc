@@ -15,6 +15,7 @@ class VehicleResolver implements ResolverInterface, AliasedInterface
      * @var TypeResolver
      */
     private $typeResolver;
+
     /**
      * @var VehicleRepositoryInterface
      */
