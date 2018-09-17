@@ -40,7 +40,7 @@ type Car implements Vehicle {
 }
 
 input CarInput {
-  id: String!
+  id: ID!
   manufacturer: String!
   model: String!
   seats_number: Int!
@@ -127,26 +127,26 @@ union Pet = Dog | Cat | Bear
 type Query {
   persons(
     # Resolves person using its id.
-    id: String
+    id: ID
   ): [Person]
   person(
     # Resolves person using its id.
-    id: String!
+    id: ID!
   ): Person
   vehicles(
     # Resolves vehicle using its owner id.
-    owner: String
+    owner: ID
 
     # Resolves vehicle using its id.
     id: String
   ): [Vehicle]
   car(
     # Resolves car using its id.
-    id: String!
+    id: ID!
   ): Car
   truck(
     # Resolves truck using its id.
-    id: String!
+    id: ID!
   ): Truck
 }
 
@@ -166,7 +166,7 @@ type Truck implements Vehicle {
 }
 
 input TruckInput {
-  id: String!
+  id: ID!
   manufacturer: String!
   model: String!
   maximum_load: Int!

@@ -3,7 +3,7 @@ CarInput:
     config:
         fields:
             id:
-                type: "String!"
+                type: "ID!"
             manufacturer:
                 type: "String!"
             model:
