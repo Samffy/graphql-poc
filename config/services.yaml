@@ -74,6 +74,11 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: "animal_type", method: "resolveType" }
 
+    app.connection.resolver:
+        class: App\Common\App\Resolver\ConnectionResolver
+        tags:
+        - { name: overblog_graphql.resolver, alias: "app.connection.resolver" }
+
     app.formatter.validation_exception:
         class: App\Common\App\Formatter\ValidationExceptionFormatter
         public: false

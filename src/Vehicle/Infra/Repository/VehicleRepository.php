@@ -77,6 +77,25 @@ class VehicleRepository implements VehicleRepositoryInterface
             );
         }
 
+        if ($query->hasAfter()) {
+            $qb->andWhere(
+                $qb->expr()->gt(
+                    'v.id',
+                    $qb->expr()->literal($query->getAfter())
+                )
+            );
+        }
+
+        if ($query->hasOffset()) {
+            $qb->setFirstResult($query->getOffset());
+        }
+
+        if ($query->hasLimit()) {
+            $qb->setMaxResults($query->getLimit());
+        }
+
+        $qb->orderBy('v.id', 'ASC');
+
         return $qb->getQuery()->getResult();
     }
 

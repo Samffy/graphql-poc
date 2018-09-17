@@ -1,0 +1,42 @@
+{
+    "data": {
+        "vehicles": {
+            "totalCount": 3,
+            "pageInfo": {
+                "hasNextPage": true,
+                "hasPreviousPage": false,
+                "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+                "endCursor": "YXJyYXljb25uZWN0aW9uOjI="
+            },
+            "edges": [
+                {
+                    "node": {
+                        "id": "VHJ1Y2s6YXRlYW0=",
+                        "manufacturer": "GMC",
+                        "model": "Vandura",
+                        "maximum_load": 1000
+                    },
+                    "cursor": "YXJyYXljb25uZWN0aW9uOjA="
+                },
+                {
+                    "node": {
+                        "id": "Q2FyOmNsaW8=",
+                        "manufacturer": "Renault",
+                        "model": "Clio 2",
+                        "seats_number": 5
+                    },
+                    "cursor": "YXJyYXljb25uZWN0aW9uOjE="
+                },
+                {
+                    "node": {
+                        "id": "Q2FyOmNveA==",
+                        "manufacturer": "Volkswagen",
+                        "model": "Coccinelle",
+                        "seats_number": 4
+                    },
+                    "cursor": "YXJyYXljb25uZWN0aW9uOjI="
+                }
+            ]
+        }
+    }
+}

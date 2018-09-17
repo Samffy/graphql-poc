@@ -1,13 +1,25 @@
 {
-    vehicles(id: "Q2FyOmNsaW8=") {
-        id
-        manufacturer
-        model
-        ... on Car {
-            seats_number
+    vehicles(id:"Q2FyOmNsaW8="){
+        totalCount
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
         }
-        ... on Truck {
-            maximum_load
+        edges {
+            node {
+                id
+                manufacturer
+                model
+                ... on Car {
+                    seats_number
+                }
+                ... on Truck {
+                    maximum_load
+                }
+            }
+            cursor
         }
     }
 }

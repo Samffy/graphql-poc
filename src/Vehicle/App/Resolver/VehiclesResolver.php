@@ -5,8 +5,11 @@ namespace App\Vehicle\App\Resolver;
 use App\Person\Domain\Person;
 use App\Vehicle\App\Query\VehiclesQuery;
 use App\Vehicle\Infra\Repository\VehicleRepository;
+use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
+use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
+use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 class VehiclesResolver implements ResolverInterface, AliasedInterface
 {
@@ -24,15 +27,29 @@ class VehiclesResolver implements ResolverInterface, AliasedInterface
     }
 
     /**
-     * @param string|null $personId
-     * @param string|null $vehicleId
-     * @return array
+     * @param Argument $argument
+     * @return Connection
      */
-    public function resolve(string $personId = null, string $vehicleId = null): array
+    public function resolve(Argument $argument): Connection
     {
-        $query = new VehiclesQuery($personId, $vehicleId);
+        $query = VehiclesQuery::createFromArgument($argument);
 
-        return $this->vehicleRepository->findAll($query);
+        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+            if ($offset !== null && $limit !== null) {
+                $query
+                    ->setLimit($limit)
+                    ->setOffset($offset)
+                ;
+            }
+
+            return $this->vehicleRepository->findAll($query);
+        });
+
+        return $paginator->forward(
+            new Argument([
+                'first' => $argument->offsetGet('first'),
+            ])
+        );
     }
 
     /**

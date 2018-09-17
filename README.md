@@ -24,7 +24,7 @@ This project implements :
     * :heavy_check_mark: Query
     * :heavy_check_mark: GlobalId
     * :heavy_multiplication_x: Type Inheritance
-    * :heavy_multiplication_x: Pagination
+    * :heavy_check_mark: Pagination
     * :heavy_check_mark: Mutation
     * :heavy_multiplication_x: Promise
     * :heavy_check_mark: Validation

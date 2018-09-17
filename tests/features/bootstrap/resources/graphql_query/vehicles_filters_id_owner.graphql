@@ -1,13 +1,27 @@
 {
-    vehicles(owner: "UGVyc29uOmR1ZmZ5", id: "Q2FyOmNveA==") {
-        id
-        manufacturer
-        model
-        ... on Car {
-            seats_number
+    vehicles(owner: "UGVyc29uOmR1ZmZ5", id: "Q2FyOmNveA=="){
+        totalCount
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
         }
-        ... on Truck {
-            maximum_load
+        edges {
+            node {
+                id
+                manufacturer
+                model
+                ... on Car {
+                    seats_number
+                }
+                ... on Truck {
+                    maximum_load
+                }
+            }
+            cursor
         }
     }
 }
+
+
