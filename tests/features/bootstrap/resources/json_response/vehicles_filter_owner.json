@@ -1,18 +1,33 @@
 {
   "data": {
-    "vehicles": [
-      {
-        "id": "Q2FyOmNveA==",
-        "manufacturer": "Volkswagen",
-        "model": "Coccinelle",
-        "seats_number": 4
+    "vehicles": {
+      "totalCount": 2,
+      "pageInfo": {
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjE="
       },
-      {
-        "id": "VHJ1Y2s6ZmVhcg==",
-        "manufacturer": "Corbitt",
-        "model": "50SD6",
-        "maximum_load": 5000
-      }
-    ]
+      "edges": [
+        {
+          "node": {
+            "id": "Q2FyOmNveA==",
+            "manufacturer": "Volkswagen",
+            "model": "Coccinelle",
+            "seats_number": 4
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjA="
+        },
+        {
+          "node": {
+            "id": "VHJ1Y2s6ZmVhcg==",
+            "manufacturer": "Corbitt",
+            "model": "50SD6",
+            "maximum_load": 5000
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjE="
+        }
+      ]
+    }
   }
 }

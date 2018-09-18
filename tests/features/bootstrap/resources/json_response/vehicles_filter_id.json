@@ -1,12 +1,24 @@
 {
   "data": {
-    "vehicles": [
-      {
-        "id": "Q2FyOmNsaW8=",
-        "manufacturer": "Renault",
-        "model": "Clio 2",
-        "seats_number": 5
-      }
-    ]
+    "vehicles": {
+      "totalCount": 1,
+      "pageInfo": {
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjA="
+      },
+      "edges": [
+        {
+          "node": {
+            "id": "Q2FyOmNsaW8=",
+            "manufacturer": "Renault",
+            "model": "Clio 2",
+            "seats_number": 5
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjA="
+        }
+      ]
+    }
   }
 }

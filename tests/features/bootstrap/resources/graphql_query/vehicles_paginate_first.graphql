@@ -1,5 +1,5 @@
 {
-    vehicles {
+    vehicles(first: 3) {
         totalCount
         pageInfo {
             hasNextPage

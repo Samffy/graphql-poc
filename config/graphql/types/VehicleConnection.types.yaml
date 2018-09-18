@@ -1,0 +1,9 @@
+VehicleConnection:
+    type: relay-connection
+    config:
+        nodeType: Vehicle
+        connectionFields:
+            totalCount:
+                type: Int
+                description: "Number of items in the connection"
+                resolve: "@=service('app.connection.resolver').resolve(value)"

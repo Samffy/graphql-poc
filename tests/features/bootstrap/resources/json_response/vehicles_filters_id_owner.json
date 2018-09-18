@@ -1,12 +1,24 @@
 {
   "data": {
-    "vehicles": [
-      {
-        "id": "Q2FyOmNveA==",
-        "manufacturer": "Volkswagen",
-        "model": "Coccinelle",
-        "seats_number": 4
-      }
-    ]
+    "vehicles": {
+      "totalCount": 1,
+      "pageInfo": {
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjA="
+      },
+      "edges": [
+        {
+          "node": {
+            "id": "Q2FyOmNveA==",
+            "manufacturer": "Volkswagen",
+            "model": "Coccinelle",
+            "seats_number": 4
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjA="
+        }
+      ]
+    }
   }
 }
