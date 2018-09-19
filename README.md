@@ -6,7 +6,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/10471f85-68a0-4ca6-8f22-3f8ac34dfb89/mini.png)](https://insight.sensiolabs.com/projects/10471f85-68a0-4ca6-8f22-3f8ac34dfb89)
 
 This project is a proof of concept to test graphQL usage in PHP.  
-This work is based mainly on [Symfony framework](https://github.com/symfony/symfony/tree/4.0) and [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle/tree/0.11).
+This work is based mainly on [Symfony framework](https://github.com/symfony/symfony/tree/4.1) and [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle/tree/0.11).
 
 This project implements :
 
@@ -33,7 +33,7 @@ This project implements :
 
 * git
 * composer
-* PHP 7.1.3 or higher
+* PHP 7.2 or higher
 * PDO-SQLite PHP extension enabled
 * [a Symfony 4.1 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
 
