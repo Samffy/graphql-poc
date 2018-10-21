@@ -33,7 +33,7 @@ This project implements :
 
 * git
 * composer
-* PHP 7.2 or higher
+* PHP 7.1.3 or higher
 * PDO-SQLite PHP extension enabled
 * [a Symfony 4.1 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
 
