@@ -35,7 +35,7 @@ This project implements :
 * composer
 * PHP 7.1.3 or higher
 * PDO-SQLite PHP extension enabled
-* [a Symfony 4.1 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
+* [a Symfony 4.2 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
 
 ## Installation
 
