@@ -12,7 +12,7 @@ class VehicleFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         foreach (self::getVehicles() as $id => $data) {
-            switch($data['class']) {
+            switch ($data['class']) {
                 case Car::class:
                     $vehicle = new Car($id, $data['manufacturer'], $data['model'], $data['seats']);
                     break;

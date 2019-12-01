@@ -7,40 +7,19 @@ use Overblog\GraphQLBundle\Definition\Argument;
 
 class VehiclesQuery
 {
-    /**
-     * @var string
-     */
     private $personId;
-
-    /**
-     * @var string
-     */
     private $vehicleId;
-
-    /**
-     * @var string
-     */
     private $after;
-
-    /**
-     * @var int
-     */
     private $offset;
-
-    /**
-     * @var int
-     */
     private $limit;
 
-    /**
-     * @param string|null $personId
-     * @param string|null $vehicleId
-     * @param string|null $after
-     * @param int|null $offset
-     * @param int|null $limit
-     */
-    public function __construct(string $personId = null, string $vehicleId = null, string $after = null, int $offset = null, int $limit = null)
-    {
+    public function __construct(
+        string $personId = null,
+        string $vehicleId = null,
+        string $after = null,
+        int $offset = null,
+        int $limit = null
+    ) {
         $this->personId = $personId;
         $this->vehicleId = $vehicleId;
         $this->after = $after;

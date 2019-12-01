@@ -6,7 +6,6 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
 /**
- * Class Version20180624103144
  * Description : Create application schema
  */
 final class Version20180624103144 extends AbstractMigration

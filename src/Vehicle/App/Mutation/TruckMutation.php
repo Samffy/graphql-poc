@@ -13,20 +13,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class TruckMutation implements MutationInterface, AliasedInterface
 {
-    /**
-     * @var VehicleRepositoryInterface
-     */
     private $vehicleRepository;
-
-    /**
-     * @var ValidatorInterface
-     */
     private $validator;
 
-    /**
-     * @param VehicleRepositoryInterface $vehicleRepository
-     * @param ValidatorInterface $validator
-     */
     public function __construct(VehicleRepositoryInterface $vehicleRepository, ValidatorInterface $validator)
     {
         $this->vehicleRepository = $vehicleRepository;
@@ -34,8 +23,6 @@ class TruckMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param Argument $argument
-     * @return Truck
      * @throws ValidationException
      */
     public function createTruck(Argument $argument): Truck
@@ -54,8 +41,6 @@ class TruckMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param Argument $argument
-     * @return Truck
      * @throws ValidationException
      */
     public function updateTruck(Argument $argument): Truck
@@ -79,9 +64,6 @@ class TruckMutation implements MutationInterface, AliasedInterface
         return $this->vehicleRepository->save($truck);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getAliases(): array
     {
         return [

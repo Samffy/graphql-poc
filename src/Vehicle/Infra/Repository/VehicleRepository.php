@@ -2,34 +2,23 @@
 
 namespace App\Vehicle\Infra\Repository;
 
-use App\Common\Infra\Repository\DataRepository;
 use App\Vehicle\App\Query\VehiclesQuery;
 use App\Person\Domain\Person;
 use App\Vehicle\Domain\VehicleAbstract;
 use App\Vehicle\Domain\VehicleInterface;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 class VehicleRepository implements VehicleRepositoryInterface
 {
-    /**
-     * @var ObjectManager
-     */
     private $em;
 
-    /**
-     * @param ObjectManager $em
-     */
-    public function __construct(ObjectManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
-    /**
-     * @param Person $person
-     * @return array
-     */
     public function findByPerson(Person $person): array
     {
         $qb = $this->getRepository()->createQueryBuilder('v');
@@ -47,10 +36,6 @@ class VehicleRepository implements VehicleRepositoryInterface
         return $qb->getQuery()->getResult();
     }
 
-    /**
-     * @param VehiclesQuery $query
-     * @return array
-     */
     public function findAll(VehiclesQuery $query): array
     {
         $qb = $this->getRepository()->createQueryBuilder('v');
@@ -100,8 +85,6 @@ class VehicleRepository implements VehicleRepositoryInterface
     }
 
     /**
-     * @param string $id
-     * @return Car|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function find(string $id): ?VehicleInterface
@@ -118,10 +101,6 @@ class VehicleRepository implements VehicleRepositoryInterface
         return $qb->getQuery()->getOneOrNullResult();
     }
 
-    /**
-     * @param VehicleInterface $vehicle
-     * @return VehicleInterface
-     */
     public function save(VehicleInterface $vehicle): VehicleInterface
     {
         $this->em->persist($vehicle);
@@ -130,18 +109,12 @@ class VehicleRepository implements VehicleRepositoryInterface
         return $vehicle;
     }
 
-    /**
-     * @param VehicleInterface $vehicle
-     */
     public function delete(VehicleInterface $vehicle): void
     {
         $this->em->remove($vehicle);
         $this->em->flush();
     }
 
-    /**
-     * @return EntityRepository
-     */
     protected function getRepository(): EntityRepository
     {
         return $this->em->getRepository(VehicleAbstract::class);

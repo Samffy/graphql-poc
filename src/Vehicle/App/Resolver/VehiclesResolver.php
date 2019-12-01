@@ -13,23 +13,13 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 class VehiclesResolver implements ResolverInterface, AliasedInterface
 {
-    /**
-     * @var VehicleRepository
-     */
     private $vehicleRepository;
 
-    /**
-     * @param VehicleRepository $vehicleRepository
-     */
     public function __construct(VehicleRepository $vehicleRepository)
     {
         $this->vehicleRepository = $vehicleRepository;
     }
 
-    /**
-     * @param Argument $argument
-     * @return Connection
-     */
     public function resolve(Argument $argument): Connection
     {
         $query = VehiclesQuery::createFromArgument($argument);
@@ -52,11 +42,6 @@ class VehiclesResolver implements ResolverInterface, AliasedInterface
         );
     }
 
-    /**
-     * @param Person $person
-     * @param string|null $id
-     * @return array|null
-     */
     public function resolveByPerson(Person $person, string $id = null): ?array
     {
         $query = new VehiclesQuery($person->getId(), $id);
@@ -64,9 +49,6 @@ class VehiclesResolver implements ResolverInterface, AliasedInterface
         return $this->vehicleRepository->findAll($query);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getAliases(): array
     {
         return [

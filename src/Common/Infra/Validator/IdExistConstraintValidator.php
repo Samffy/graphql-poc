@@ -3,29 +3,21 @@
 namespace App\Common\Infra\Validator;
 
 use App\Common\App\Transformer\AppGlobalId;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 class IdExistConstraintValidator extends ConstraintValidator
 {
-    /**
-     * @var ObjectManager
-     */
     private $em;
 
-    /**
-     * @param ObjectManager $em
-     */
-    public function __construct(ObjectManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
     /**
-     * @param mixed $identifier
-     * @param Constraint $constraint
      * @throws \ReflectionException
      */
     public function validate($identifier, Constraint $constraint)
@@ -51,10 +43,6 @@ class IdExistConstraintValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param string $fqcn
-     * @return EntityRepository
-     */
     protected function getRepository(string $fqcn): EntityRepository
     {
         return $this->em->getRepository($fqcn);

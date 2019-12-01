@@ -7,10 +7,7 @@ use Overblog\GraphQLBundle\Event\ErrorFormattingEvent;
 
 class ValidationExceptionFormatter
 {
-    /**
-     * @param ErrorFormattingEvent $event
-     */
-    public function onErrorFormatting(ErrorFormattingEvent $event) :void
+    public function onErrorFormatting(ErrorFormattingEvent $event): void
     {
         $error = $event->getError()->getPrevious();
 
@@ -18,7 +15,7 @@ class ValidationExceptionFormatter
             $errors = [];
 
             $violations = $error->getViolations();
-            foreach($violations as $violation) {
+            foreach ($violations as $violation) {
                 $errors[] = [
                     'name' => $violation->getPropertyPath(),
                     'message' => $violation->getMessage(),
