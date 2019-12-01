@@ -35,7 +35,7 @@ This project implements :
 * composer
 * PHP 7.1.3 or higher
 * PDO-SQLite PHP extension enabled
-* [a Symfony 4.2 compatible environment](https://symfony.com/doc/current/reference/requirements.html)
+* [a Symfony 4.4 compatible environment](https://symfony.com/doc/4.4/setup.html#technical-requirements)
 
 ## Installation
 
@@ -57,9 +57,10 @@ Install and launch project using :
 $ make deploy
 ```
 
-Go to : http://localhost:8000/graphiql
+Go to : http://localhost:8000/graphiql  
+If you want to request the app using another GraphQL client, the endpoint is : http://localhost:8000/
 
-In `dev` mode, Symfony profiler is available at `/_profiler`.
+In `dev` mode, Symfony profiler is available at `/_profiler`.  
 
 ## GraphQL
 
