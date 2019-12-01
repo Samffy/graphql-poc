@@ -11,10 +11,6 @@ use Overblog\GraphQLBundle\Definition\Argument;
 
 class VehicleFactory
 {
-    /**
-     * @param Argument $argument
-     * @return CarInput
-     */
     public static function createCarInput(Argument $argument): CarInput
     {
         $input = $argument->offsetGet('input');
@@ -27,10 +23,6 @@ class VehicleFactory
         );
     }
 
-    /**
-     * @param CarInput $input
-     * @return Car
-     */
     public static function createCar(CarInput $input): Car
     {
         return new Car(
@@ -41,10 +33,6 @@ class VehicleFactory
         );
     }
 
-    /**
-     * @param Argument $argument
-     * @return TruckInput
-     */
     public static function createTruckInput(Argument $argument): TruckInput
     {
         $input = $argument->offsetGet('input');
@@ -57,10 +45,6 @@ class VehicleFactory
         );
     }
 
-    /**
-     * @param TruckInput $input
-     * @return Truck
-     */
     public static function createTruck(TruckInput $input): Truck
     {
         return new Truck(

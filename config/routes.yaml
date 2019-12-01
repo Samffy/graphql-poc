@@ -1,6 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
 
 overblog_graphql_single_endpoint:
   resource: "@OverblogGraphQLBundle/Resources/config/routing/single.yaml"

@@ -13,20 +13,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CarMutation implements MutationInterface, AliasedInterface
 {
-    /**
-     * @var VehicleRepositoryInterface
-     */
     private $vehicleRepository;
-
-    /**
-     * @var ValidatorInterface
-     */
     private $validator;
 
-    /**
-     * @param VehicleRepositoryInterface $vehicleRepository
-     * @param ValidatorInterface $validator
-     */
     public function __construct(VehicleRepositoryInterface $vehicleRepository, ValidatorInterface $validator)
     {
         $this->vehicleRepository = $vehicleRepository;
@@ -34,8 +23,6 @@ class CarMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param Argument $argument
-     * @return Car
      * @throws ValidationException
      */
     public function createCar(Argument $argument): Car
@@ -54,8 +41,6 @@ class CarMutation implements MutationInterface, AliasedInterface
     }
 
     /**
-     * @param Argument $argument
-     * @return Car
      * @throws ValidationException
      */
     public function updateCar(Argument $argument): Car
@@ -79,9 +64,6 @@ class CarMutation implements MutationInterface, AliasedInterface
         return $this->vehicleRepository->save($car);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getAliases(): array
     {
         return [

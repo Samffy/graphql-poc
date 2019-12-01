@@ -10,22 +10,14 @@ use Doctrine\ORM\EntityRepository;
 
 class PersonRepository implements PersonRepositoryInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private $em;
 
-    /**
-     * @param EntityManagerInterface $em
-     */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
     /**
-     * @param string $id
-     * @return Person|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function find(string $id): ?Person
@@ -42,10 +34,6 @@ class PersonRepository implements PersonRepositoryInterface
         return $qb->getQuery()->getOneOrNullResult();
     }
 
-    /**
-     * @param PersonsQuery $query
-     * @return array
-     */
     public function findAll(PersonsQuery $query): array
     {
         $qb = $this->getRepository()->createQueryBuilder('p');
@@ -62,9 +50,6 @@ class PersonRepository implements PersonRepositoryInterface
         return $qb->getQuery()->getResult();
     }
 
-    /**
-     * @return EntityRepository
-     */
     private function getRepository(): EntityRepository
     {
         return $this->em->getRepository(Person::class);

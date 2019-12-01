@@ -10,22 +10,14 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class IdDoesNotExistConstraintValidator extends ConstraintValidator
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private $em;
 
-    /**
-     * @param EntityManagerInterface $em
-     */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
     /**
-     * @param mixed $identifier
-     * @param Constraint $constraint
      * @throws \ReflectionException
      */
     public function validate($identifier, Constraint $constraint)
@@ -51,10 +43,6 @@ class IdDoesNotExistConstraintValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param string $fqcn
-     * @return EntityRepository
-     */
     protected function getRepository(string $fqcn): EntityRepository
     {
         return $this->em->getRepository($fqcn);
