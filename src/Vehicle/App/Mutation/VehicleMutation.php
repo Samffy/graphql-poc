@@ -35,7 +35,7 @@ class VehicleMutation implements MutationInterface, AliasedInterface
         if (!$vehicle = $this->vehicleRepository->find($id)) {
             throw new UserError(sprintf(
                 '%s [%s] not found',
-                AppGlobalId::getTypeFromGlobalId($globalId) ,
+                AppGlobalId::getTypeFromGlobalId($globalId),
                 $globalId
             ));
         }

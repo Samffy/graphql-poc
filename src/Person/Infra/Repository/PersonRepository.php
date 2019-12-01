@@ -5,20 +5,20 @@ namespace App\Person\Infra\Repository;
 use App\Person\App\Query\PersonsQuery;
 use App\Person\Domain\Person;
 use App\Person\Domain\PersonRepositoryInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 class PersonRepository implements PersonRepositoryInterface
 {
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $em;
 
     /**
-     * @param ObjectManager $em
+     * @param EntityManagerInterface $em
      */
-    public function __construct(ObjectManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

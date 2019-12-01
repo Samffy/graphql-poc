@@ -2,26 +2,25 @@
 
 namespace App\Vehicle\Infra\Repository;
 
-use App\Common\Infra\Repository\DataRepository;
 use App\Vehicle\App\Query\VehiclesQuery;
 use App\Person\Domain\Person;
 use App\Vehicle\Domain\VehicleAbstract;
 use App\Vehicle\Domain\VehicleInterface;
 use App\Vehicle\Domain\VehicleRepositoryInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 class VehicleRepository implements VehicleRepositoryInterface
 {
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $em;
 
     /**
-     * @param ObjectManager $em
+     * @param EntityManagerInterface $em
      */
-    public function __construct(ObjectManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

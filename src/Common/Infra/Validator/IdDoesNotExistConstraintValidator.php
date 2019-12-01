@@ -3,7 +3,7 @@
 namespace App\Common\Infra\Validator;
 
 use App\Common\App\Transformer\AppGlobalId;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -11,14 +11,14 @@ use Symfony\Component\Validator\ConstraintValidator;
 class IdDoesNotExistConstraintValidator extends ConstraintValidator
 {
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $em;
 
     /**
-     * @param ObjectManager $em
+     * @param EntityManagerInterface $em
      */
-    public function __construct(ObjectManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

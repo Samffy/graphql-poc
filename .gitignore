@@ -11,3 +11,7 @@
 ###< symfony/web-server-bundle ###
 
 !/var/app.db
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
