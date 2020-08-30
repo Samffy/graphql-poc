@@ -32,9 +32,6 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
-    "container-interop/container-interop": {
-        "version": "1.2.0"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -110,6 +107,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.1"
+    },
     "fabpot/goutte": {
         "version": "v3.2.2"
     },
@@ -121,9 +121,6 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.4.2"
-    },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
     },
     "ocramius/package-versions": {
         "version": "1.3.0"
@@ -275,6 +272,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.13.1"
     },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.18.1"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.8.0"
     },
@@ -283,6 +283,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.13.1"
+    },
+    "symfony/polyfill-php80": {
+        "version": "v1.18.1"
     },
     "symfony/process": {
         "version": "v4.0.9"
