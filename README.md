@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
 [![Build Status](https://travis-ci.org/Samffy/graphql-poc.svg?branch=master)](https://travis-ci.org/Samffy/graphql-poc) 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Samffy/graphql-poc/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Samffy/graphql-poc/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/10471f85-68a0-4ca6-8f22-3f8ac34dfb89/mini.png)](https://insight.sensiolabs.com/projects/10471f85-68a0-4ca6-8f22-3f8ac34dfb89)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Samffy_graphql-poc&metric=alert_status)](https://sonarcloud.io/dashboard?id=Samffy_graphql-poc)
 
 This project is a proof of concept to test graphQL usage in PHP.  
 This work is based mainly on [Symfony framework](https://github.com/symfony/symfony/tree/4.1) and [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle/tree/0.11).
