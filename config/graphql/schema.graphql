@@ -1,41 +1,41 @@
-# A animal interface
+"""A animal interface"""
 interface Animal {
-  # The id of the animal
+  """The id of the animal"""
   id: ID!
 
-  # The name of the animal
+  """The name of the animal"""
   name: String!
 
-  # Breed of the animal
+  """Breed of the animal"""
   breed: String!
 }
 
-# Type of animal manage by the app
+"""Type of animal manage by the app"""
 type Bear implements Animal {
-  # The id of the animal
+  """The id of the animal"""
   id: ID!
 
-  # The name of the animal
+  """The name of the animal"""
   name: String!
 
-  # Breed of the animal
+  """Breed of the animal"""
   breed: String!
 }
 
 scalar BirthDate
 
-# Type of vehicle manage by the app
+"""Type of vehicle manage by the app"""
 type Car implements Vehicle {
-  # Internal identifier
+  """Internal identifier"""
   id: ID!
 
-  # The manufacturer of the car
+  """The manufacturer of the car"""
   manufacturer: String!
 
-  # The model of the car
+  """The model of the car"""
   model: String!
 
-  # Number of seats in the car
+  """Number of seats in the car"""
   seats_number: Int!
 }
 
@@ -46,29 +46,29 @@ input CarInput {
   seats_number: Int!
 }
 
-# Type of animal manage by the app
+"""Type of animal manage by the app"""
 type Cat implements Animal {
-  # The id of the animal
+  """The id of the animal"""
   id: ID!
 
-  # The name of the animal
+  """The name of the animal"""
   name: String!
 
-  # Breed of the animal
+  """Breed of the animal"""
   breed: String!
 }
 
 scalar DateTime
 
-# Type of animal manage by the app
+"""Type of animal manage by the app"""
 type Dog implements Animal {
-  # The id of the animal
+  """The id of the animal"""
   id: ID!
 
-  # The name of the animal
+  """The name of the animal"""
   name: String!
 
-  # Breed of the animal
+  """Breed of the animal"""
   breed: String!
 }
 
@@ -85,49 +85,49 @@ type Mutation {
   DeleteTruck(input: IdInput!): ID!
 }
 
-# Information about pagination in a connection.
+"""Information about pagination in a connection."""
 type PageInfo {
-  # When paginating forwards, are there more items?
+  """When paginating forwards, are there more items?"""
   hasNextPage: Boolean!
 
-  # When paginating backwards, are there more items?
+  """When paginating backwards, are there more items?"""
   hasPreviousPage: Boolean!
 
-  # When paginating backwards, the cursor to continue.
+  """When paginating backwards, the cursor to continue."""
   startCursor: String
 
-  # When paginating forwards, the cursor to continue.
+  """When paginating forwards, the cursor to continue."""
   endCursor: String
 }
 
-# Person manage by the app
+"""Person manage by the app"""
 type Person {
-  # Internal identifier
+  """Internal identifier"""
   id: ID!
 
-  # Name of the person
+  """Name of the person"""
   name: String!
 
-  # Title of the person
+  """Title of the person"""
   title: PersonTitle!
 
-  # Birth date of the person
+  """Birth date of the person"""
   birth_date: BirthDate
 
-  # Date of creation of the person in database
+  """Date of creation of the person in database"""
   created_at: DateTime!
 
-  # Vehicles of the person
+  """Vehicles of the person"""
   vehicles(
-    # Resolves vehicle using its id.
+    """Resolves vehicle using its id."""
     id: String
   ): [Vehicle]
 
-  # Pet of the person
+  """Pet of the person"""
   pet: Pet
 }
 
-# Title of a person
+"""Title of a person"""
 enum PersonTitle {
   unknown
   Miss
@@ -136,50 +136,50 @@ enum PersonTitle {
   Mr
 }
 
-# Animals available as pet
+"""Animals available as pet"""
 union Pet = Dog | Cat | Bear
 
 type Query {
   persons(
-    # Resolves person using its id.
+    """Resolves person using its id."""
     id: ID
   ): [Person]
   person(
-    # Resolves person using its id.
+    """Resolves person using its id."""
     id: ID!
   ): Person
   vehicles(
     after: String
     first: Int
 
-    # Resolves vehicle using its owner id.
+    """Resolves vehicle using its owner id."""
     owner: ID
 
-    # Resolves vehicle using its id.
+    """Resolves vehicle using its id."""
     id: String
   ): VehicleConnection
   car(
-    # Resolves car using its id.
+    """Resolves car using its id."""
     id: ID!
   ): Car
   truck(
-    # Resolves truck using its id.
+    """Resolves truck using its id."""
     id: ID!
   ): Truck
 }
 
-# Type of vehicle manage by the app
+"""Type of vehicle manage by the app"""
 type Truck implements Vehicle {
-  # Internal identifier
+  """Internal identifier"""
   id: ID!
 
-  # The manufacturer of the truck
+  """The manufacturer of the truck"""
   manufacturer: String!
 
-  # The model of the truck
+  """The model of the truck"""
   model: String!
 
-  # Maximum load of the truck
+  """Maximum load of the truck"""
   maximum_load: Int!
 }
 
@@ -190,35 +190,35 @@ input TruckInput {
   maximum_load: Int!
 }
 
-# A vehicle interface
+"""A vehicle interface"""
 interface Vehicle {
-  # The id of the vehicle
+  """The id of the vehicle"""
   id: ID!
 
-  # The manufacturer of the vehicle
+  """The manufacturer of the vehicle"""
   manufacturer: String!
 
-  # The model of the vehicle
+  """The model of the vehicle"""
   model: String!
 }
 
-# A connection to a list of items.
+"""A connection to a list of items."""
 type VehicleConnection {
-  # Number of items in the connection
+  """Number of items in the connection"""
   totalCount: Int
 
-  # Information to aid in pagination.
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
 
-  # Information to aid in pagination.
+  """Information to aid in pagination."""
   edges: [VehicleEdge]
 }
 
-# An edge in a connection.
+"""An edge in a connection."""
 type VehicleEdge {
-  # The item at the end of the edge.
+  """The item at the end of the edge."""
   node: Vehicle
 
-  # A cursor for use in pagination.
+  """A cursor for use in pagination."""
   cursor: String!
 }
